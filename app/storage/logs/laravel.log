@@ -1,0 +1,178 @@
+[2015-02-25 02:57:07] production.ERROR: exception 'InvalidArgumentException' with message 'Command "migrate:migration" is not defined.
+
+Did you mean one of these?
+    migrate:reset
+    migrate:refresh
+    migrate:rollback
+    migrate:install
+    migrate
+    migrate:make
+    migrate:publish' in /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php:564
+Stack trace:
+#0 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(190): Symfony\Component\Console\Application->find('migrate:migrati...')
+#1 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(124): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /home/elioth010/PHPWorkspace/carretilla_online/artisan(59): Symfony\Component\Console\Application->run()
+#3 {main} [] []
+[2015-02-25 02:57:18] production.ERROR: exception 'InvalidArgumentException' with message 'There are no commands defined in the "generate" namespace.' in /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php:516
+Stack trace:
+#0 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(550): Symfony\Component\Console\Application->findNamespace('generate')
+#1 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(190): Symfony\Component\Console\Application->find('generate:migrat...')
+#2 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(124): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /home/elioth010/PHPWorkspace/carretilla_online/artisan(59): Symfony\Component\Console\Application->run()
+#4 {main} [] []
+[2015-02-25 02:57:41] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined method Illuminate\Database\Schema\Blueprint::int()' in /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php:34
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-02-25 02:58:39] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Migration' not found' in /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php:6
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2015-02-25 02:58:52] production.ERROR: exception 'InvalidArgumentException' with message 'There are no commands defined in the "generate" namespace.' in /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php:516
+Stack trace:
+#0 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(550): Symfony\Component\Console\Application->findNamespace('generate')
+#1 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(190): Symfony\Component\Console\Application->find('generate:migrat...')
+#2 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(124): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /home/elioth010/PHPWorkspace/carretilla_online/artisan(59): Symfony\Component\Console\Application->run()
+#4 {main} [] []
+[2015-02-25 02:58:59] production.ERROR: exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1075 Incorrect table definition; there can be only one auto column and it must be defined as a key' in /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php:369
+Stack trace:
+#0 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(369): PDOStatement->execute(Array)
+#1 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(617): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'create table `u...', Array)
+#2 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(581): Illuminate\Database\Connection->runQueryCallback('create table `u...', Array, Object(Closure))
+#3 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(370): Illuminate\Database\Connection->run('create table `u...', Array, Object(Closure))
+#4 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(63): Illuminate\Database\Connection->statement('create table `u...')
+#5 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(169): Illuminate\Database\Schema\Blueprint->build(Object(Illuminate\Database\MySqlConnection), Object(Illuminate\Database\Schema\Grammars\MySqlGrammar))
+#6 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(112): Illuminate\Database\Schema\Builder->build(Object(Illuminate\Database\Schema\Blueprint))
+#7 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(211): Illuminate\Database\Schema\Builder->create('users', Object(Closure))
+#8 /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php(36): Illuminate\Support\Facades\Facade::__callStatic('create', Array)
+#9 /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php(36): Illuminate\Support\Facades\Schema::create('users', Object(Closure))
+#10 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(135): CreateUserTable->up()
+#11 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(111): Illuminate\Database\Migrations\Migrator->runUp('2015_02_25_0246...', 1, false)
+#12 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(82): Illuminate\Database\Migrations\Migrator->runMigrationList(Array, false)
+#13 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(70): Illuminate\Database\Migrations\Migrator->run('/home/elioth010...', false)
+#14 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Console/Command.php(112): Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#15 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Console/Command.php(100): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(889): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(193): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(124): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 /home/elioth010/PHPWorkspace/carretilla_online/artisan(59): Symfony\Component\Console\Application->run()
+#21 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1075 Incorrect table definition; there can be only one auto column and it must be defined as a key (SQL: create table `users` (`id` int unsigned not null auto_increment primary key, `username` varchar(45) not null, `password` varchar(32) not null, `email` varchar(60) not null, `name` varchar(250) not null, `age` int not null auto_increment primary key, `enabled` int not null auto_increment primary key) default character set utf8 collate utf8_unicode_ci)' in /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php:625
+Stack trace:
+#0 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(581): Illuminate\Database\Connection->runQueryCallback('create table `u...', Array, Object(Closure))
+#1 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(370): Illuminate\Database\Connection->run('create table `u...', Array, Object(Closure))
+#2 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(63): Illuminate\Database\Connection->statement('create table `u...')
+#3 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(169): Illuminate\Database\Schema\Blueprint->build(Object(Illuminate\Database\MySqlConnection), Object(Illuminate\Database\Schema\Grammars\MySqlGrammar))
+#4 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(112): Illuminate\Database\Schema\Builder->build(Object(Illuminate\Database\Schema\Blueprint))
+#5 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(211): Illuminate\Database\Schema\Builder->create('users', Object(Closure))
+#6 /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php(36): Illuminate\Support\Facades\Facade::__callStatic('create', Array)
+#7 /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php(36): Illuminate\Support\Facades\Schema::create('users', Object(Closure))
+#8 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(135): CreateUserTable->up()
+#9 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(111): Illuminate\Database\Migrations\Migrator->runUp('2015_02_25_0246...', 1, false)
+#10 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(82): Illuminate\Database\Migrations\Migrator->runMigrationList(Array, false)
+#11 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(70): Illuminate\Database\Migrations\Migrator->run('/home/elioth010...', false)
+#12 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Console/Command.php(112): Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#13 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Console/Command.php(100): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(889): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(193): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(124): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /home/elioth010/PHPWorkspace/carretilla_online/artisan(59): Symfony\Component\Console\Application->run()
+#19 {main} [] []
+[2015-02-25 03:01:44] production.ERROR: exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1075 Incorrect table definition; there can be only one auto column and it must be defined as a key' in /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php:369
+Stack trace:
+#0 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(369): PDOStatement->execute(Array)
+#1 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(617): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'create table `u...', Array)
+#2 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(581): Illuminate\Database\Connection->runQueryCallback('create table `u...', Array, Object(Closure))
+#3 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(370): Illuminate\Database\Connection->run('create table `u...', Array, Object(Closure))
+#4 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(63): Illuminate\Database\Connection->statement('create table `u...')
+#5 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(169): Illuminate\Database\Schema\Blueprint->build(Object(Illuminate\Database\MySqlConnection), Object(Illuminate\Database\Schema\Grammars\MySqlGrammar))
+#6 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(112): Illuminate\Database\Schema\Builder->build(Object(Illuminate\Database\Schema\Blueprint))
+#7 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(211): Illuminate\Database\Schema\Builder->create('users', Object(Closure))
+#8 /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php(36): Illuminate\Support\Facades\Facade::__callStatic('create', Array)
+#9 /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php(36): Illuminate\Support\Facades\Schema::create('users', Object(Closure))
+#10 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(135): CreateUserTable->up()
+#11 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(111): Illuminate\Database\Migrations\Migrator->runUp('2015_02_25_0246...', 1, false)
+#12 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(82): Illuminate\Database\Migrations\Migrator->runMigrationList(Array, false)
+#13 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(70): Illuminate\Database\Migrations\Migrator->run('/home/elioth010...', false)
+#14 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Console/Command.php(112): Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#15 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Console/Command.php(100): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(889): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(193): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(124): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 /home/elioth010/PHPWorkspace/carretilla_online/artisan(59): Symfony\Component\Console\Application->run()
+#21 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1075 Incorrect table definition; there can be only one auto column and it must be defined as a key (SQL: create table `users` (`id` int unsigned not null auto_increment primary key, `username` varchar(45) not null, `password` varchar(32) not null, `email` varchar(60) not null, `name` varchar(250) not null, `age` int not null auto_increment primary key, `enabled` int not null auto_increment primary key) default character set utf8 collate utf8_unicode_ci)' in /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php:625
+Stack trace:
+#0 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(581): Illuminate\Database\Connection->runQueryCallback('create table `u...', Array, Object(Closure))
+#1 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(370): Illuminate\Database\Connection->run('create table `u...', Array, Object(Closure))
+#2 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(63): Illuminate\Database\Connection->statement('create table `u...')
+#3 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(169): Illuminate\Database\Schema\Blueprint->build(Object(Illuminate\Database\MySqlConnection), Object(Illuminate\Database\Schema\Grammars\MySqlGrammar))
+#4 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(112): Illuminate\Database\Schema\Builder->build(Object(Illuminate\Database\Schema\Blueprint))
+#5 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(211): Illuminate\Database\Schema\Builder->create('users', Object(Closure))
+#6 /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php(36): Illuminate\Support\Facades\Facade::__callStatic('create', Array)
+#7 /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php(36): Illuminate\Support\Facades\Schema::create('users', Object(Closure))
+#8 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(135): CreateUserTable->up()
+#9 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(111): Illuminate\Database\Migrations\Migrator->runUp('2015_02_25_0246...', 1, false)
+#10 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(82): Illuminate\Database\Migrations\Migrator->runMigrationList(Array, false)
+#11 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(70): Illuminate\Database\Migrations\Migrator->run('/home/elioth010...', false)
+#12 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Console/Command.php(112): Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#13 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Console/Command.php(100): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(889): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(193): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(124): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /home/elioth010/PHPWorkspace/carretilla_online/artisan(59): Symfony\Component\Console\Application->run()
+#19 {main} [] []
+[2015-02-25 03:02:43] production.ERROR: exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1075 Incorrect table definition; there can be only one auto column and it must be defined as a key' in /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php:369
+Stack trace:
+#0 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(369): PDOStatement->execute(Array)
+#1 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(617): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'create table `u...', Array)
+#2 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(581): Illuminate\Database\Connection->runQueryCallback('create table `u...', Array, Object(Closure))
+#3 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(370): Illuminate\Database\Connection->run('create table `u...', Array, Object(Closure))
+#4 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(63): Illuminate\Database\Connection->statement('create table `u...')
+#5 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(169): Illuminate\Database\Schema\Blueprint->build(Object(Illuminate\Database\MySqlConnection), Object(Illuminate\Database\Schema\Grammars\MySqlGrammar))
+#6 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(112): Illuminate\Database\Schema\Builder->build(Object(Illuminate\Database\Schema\Blueprint))
+#7 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(211): Illuminate\Database\Schema\Builder->create('users', Object(Closure))
+#8 /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php(36): Illuminate\Support\Facades\Facade::__callStatic('create', Array)
+#9 /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php(36): Illuminate\Support\Facades\Schema::create('users', Object(Closure))
+#10 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(135): CreateUserTable->up()
+#11 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(111): Illuminate\Database\Migrations\Migrator->runUp('2015_02_25_0246...', 1, false)
+#12 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(82): Illuminate\Database\Migrations\Migrator->runMigrationList(Array, false)
+#13 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(70): Illuminate\Database\Migrations\Migrator->run('/home/elioth010...', false)
+#14 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Console/Command.php(112): Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#15 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Console/Command.php(100): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(889): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(193): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(124): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 /home/elioth010/PHPWorkspace/carretilla_online/artisan(59): Symfony\Component\Console\Application->run()
+#21 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1075 Incorrect table definition; there can be only one auto column and it must be defined as a key (SQL: create table `users` (`id` int unsigned not null auto_increment primary key, `username` varchar(45) not null, `password` varchar(32) not null, `email` varchar(60) not null, `name` varchar(250) not null, `age` int not null auto_increment primary key, `enabled` int not null auto_increment primary key) default character set utf8 collate utf8_unicode_ci)' in /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php:625
+Stack trace:
+#0 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(581): Illuminate\Database\Connection->runQueryCallback('create table `u...', Array, Object(Closure))
+#1 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Connection.php(370): Illuminate\Database\Connection->run('create table `u...', Array, Object(Closure))
+#2 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(63): Illuminate\Database\Connection->statement('create table `u...')
+#3 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(169): Illuminate\Database\Schema\Blueprint->build(Object(Illuminate\Database\MySqlConnection), Object(Illuminate\Database\Schema\Grammars\MySqlGrammar))
+#4 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(112): Illuminate\Database\Schema\Builder->build(Object(Illuminate\Database\Schema\Blueprint))
+#5 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(211): Illuminate\Database\Schema\Builder->create('users', Object(Closure))
+#6 /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php(36): Illuminate\Support\Facades\Facade::__callStatic('create', Array)
+#7 /home/elioth010/PHPWorkspace/carretilla_online/app/database/migrations/2015_02_25_024605_create_user_table.php(36): Illuminate\Support\Facades\Schema::create('users', Object(Closure))
+#8 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(135): CreateUserTable->up()
+#9 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(111): Illuminate\Database\Migrations\Migrator->runUp('2015_02_25_0246...', 1, false)
+#10 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(82): Illuminate\Database\Migrations\Migrator->runMigrationList(Array, false)
+#11 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(70): Illuminate\Database\Migrations\Migrator->run('/home/elioth010...', false)
+#12 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Console/Command.php(112): Illuminate\Database\Console\Migrations\MigrateCommand->fire()
+#13 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Command/Command.php(253): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Console/Command.php(100): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(889): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(193): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /home/elioth010/PHPWorkspace/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(124): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /home/elioth010/PHPWorkspace/carretilla_online/artisan(59): Symfony\Component\Console\Application->run()
+#19 {main} [] []

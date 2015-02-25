@@ -1,6 +1,6 @@
 <?php
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Eloquent {
 
 	use UserTrait, RemindableTrait;
 
@@ -10,12 +10,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'user';
+	protected $key = 'username';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('password', 'remember_token');
+	protected $hidden = array('user', 'name', 'email');
 
 }
