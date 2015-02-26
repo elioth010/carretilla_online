@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/route', function()
+Route::any('route', function()
 {
 	return View::make('hello');
 });
