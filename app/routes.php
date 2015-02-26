@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/route', function()
 {
 	return View::make('hello');
 });
 
-Route::get('/users', array('users' => 'UserController@showUser'));
+Route::get('/', "UserController@showUser");
 
