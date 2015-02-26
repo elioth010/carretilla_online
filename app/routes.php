@@ -13,7 +13,7 @@
 
 Route::any('route', function()
 {
-	return View::make('hello');
+	return View::make('hellop');
 });
 
 Route::get('/', "UserController@showUser");
