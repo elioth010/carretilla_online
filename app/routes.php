@@ -13,8 +13,9 @@
 
 Route::any('route', function()
 {
-	return View::make('hellop');
+	return View::make('hello');
 });
 
-Route::get('/', "UserController@showUser");
+Route::get('/', "HomeController@showWelcome");
+Route::get('/users', "UserController@showUser");
 
