@@ -16,6 +16,21 @@ Route::any('route', function()
 	return View::make('hello');
 });
 
+//USER
 Route::get('/', "HomeController@showWelcome");
 Route::get('/users', "UserController@showUser");
+Route::get('/users/add', "UserController@addUser");
+Route::get('/users/update', "UserController@updateUser");
+Route::get('/users/delete', "UserController@deleteUser");
 
+//ROLE
+Route::get('/roles', "RoleController@showRole");
+Route::get('/roles/add', "RoleController@addRole");
+Route::get('/roles/update', "RoleController@updateRole");
+Route::get('/roles/delete', "RoleController@deleteRole");
+
+//PRODUCT
+Route::get('/products', "ProductController@showProduct");
+Route::get('/products/add', "UserController@addProduct");
+Route::get('/products/update', "ProductController@updateProduct");
+Route::get('/products/delete', "ProductController@deleteProduct");
