@@ -16,18 +16,18 @@ Route::any('route', function()
 	return View::make('hello');
 });
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //Route::get('/', "HomeController@showWelcome");
-=======
+//=======
 //USER
 Route::get('/', "HomeController@showWelcome");
->>>>>>> 27f4715cd7df939480c15b51aec50045204764e6
+//>>>>>>> 27f4715cd7df939480c15b51aec50045204764e6
 Route::get('/users', "UserController@showUser");
 Route::get('/users/add', "UserController@addUser");
 Route::get('/users/update', "UserController@updateUser");
 Route::get('/users/delete', "UserController@deleteUser");
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 Route::get('/', array('as' => 'home', function () { 
     return View::make("home");
 }));
@@ -43,10 +43,12 @@ Route::get('login', array('as' => 'login', function () {
 Route::post('login', function () {
     $user = array(
         'username' => Input::get('username'),
-        'password' => HashyInput::get('password')
+        'password' => Hash::make(Input::get('password'))
     );
+
+    $remeber = Input::get("remember_me");
     
-    if (Auth::attempt($user)) {
+    if (Auth::attempt($user, $remeber, true)) {
         return Redirect::route('home')->with('flash_notice', 'You are successfully logged in.');
     }
     // authentication failure! lets go back to the login page
@@ -73,7 +75,7 @@ Route::filter('auth', function(){
         }
 });
 
-=======
+//=======
 //ROLE
 Route::get('/roles', "RoleController@showRole");
 Route::get('/roles/add', "RoleController@addRole");
@@ -85,4 +87,4 @@ Route::get('/products', "ProductController@showProduct");
 Route::get('/products/add', "UserController@addProduct");
 Route::get('/products/update', "ProductController@updateProduct");
 Route::get('/products/delete', "ProductController@deleteProduct");
->>>>>>> 27f4715cd7df939480c15b51aec50045204764e6
+//>>>>>>> 27f4715cd7df939480c15b51aec50045204764e6
