@@ -16,12 +16,7 @@ Route::any('route', function()
 	return View::make('hello');
 });
 
-//<<<<<<< HEAD
-//Route::get('/', "HomeController@showWelcome");
-//=======
-//USER
 Route::get('/', "HomeController@showWelcome");
-//>>>>>>> 27f4715cd7df939480c15b51aec50045204764e6
 Route::get('/users', "UserController@showUser");
 Route::get('/users/add', "UserController@addUser");
 Route::get('/users/update', "UserController@updateUser");
@@ -42,14 +37,12 @@ Route::get('login', array('as' => 'login', function () {
 
 Route::post('login', function () {
     $user = array(
-        'email' => Input::get('username'),
-        'password' => Hash::make(Input::get('password'))
+        'username' => Input::get('username'),
+        'password' => Input::get('password')
     );
-
-    $remeber = Input::get("remember_me");
     
-    if (Auth::attempt($user, $remeber, true)) {
-        return Redirect::route('home')->with('flash_notice', 'You are successfully logged in.');
+    if (Auth::attempt($user)) {
+        return View::route('home')->with('flash_notice', 'You are successfully logged in.');
     }
     // authentication failure! lets go back to the login page
     return Redirect::route('login')->with('flash_error', 'Your username/password combination was incorrect.')->withInput();
@@ -75,8 +68,6 @@ Route::filter('auth', function(){
         }
 });
 
-//=======
-//ROLE
 Route::get('/roles', "RoleController@showRole");
 Route::get('/roles/add', "RoleController@addRole");
 Route::get('/roles/update', "RoleController@updateRole");
@@ -87,4 +78,3 @@ Route::get('/products', "ProductController@showProduct");
 Route::get('/products/add', "UserController@addProduct");
 Route::get('/products/update', "ProductController@updateProduct");
 Route::get('/products/delete', "ProductController@deleteProduct");
-//>>>>>>> 27f4715cd7df939480c15b51aec50045204764e6
