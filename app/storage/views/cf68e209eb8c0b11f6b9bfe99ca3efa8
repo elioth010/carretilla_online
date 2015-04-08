@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Laravel Authentication Demo</title>
+        <?php echo HTML::style('/css/style.css'); ?>
+
+    </head>
+    <body>
+        <div id="container">
+            <div id="nav">
+                <ul>
+                    <li>
+                        <a href="<?php echo URL::route('home'); ?>">
+                            <i class="icon-dashboard"></i>
+                            <span class="menu-text"> Home </span>
+                        </a>
+                    </li>
+                    <?php if(Auth::check()): ?>
+                    <li><?php echo URL::route('profile'); ?></li>
+                    <li><?php echo URL::route('logout', 'Logout ('.Auth::user()->username.')'); ?></li>
+                    <?php else: ?>
+                    <li>
+                        <a href="<?php echo URL::route('login'); ?>">
+                            <i class="icon-dashboard"></i>
+                            <span class="menu-text">Login</span>
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                </ul>
+            </div><!-- end nav -->
+
+            <!-- check for flash notification message -->
+            <?php if(Session::has('flash_notice')): ?>
+            <div id="flash_notice"><?php echo Session::get('flash_notice'); ?></div>
+            <?php endif; ?>
+
+            <?php echo $__env->yieldContent('content'); ?>
+        </div><!-- end container -->
+    </body>
+</html>

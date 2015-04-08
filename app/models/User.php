@@ -9,7 +9,7 @@ class User extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'user';
+	protected $table = 'users';
 	protected $key = 'username';
 
 	/**
@@ -17,6 +17,6 @@ class User extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('user', 'name', 'email');
+	protected $hidden = array('username', 'password', 'email', 'name', 'age');
 
 }
