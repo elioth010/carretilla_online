@@ -42,7 +42,7 @@ Route::get('login', array('as' => 'login', function () {
 
 Route::post('login', function () {
     $user = array(
-        'username' => Input::get('username'),
+        'email' => Input::get('username'),
         'password' => Hash::make(Input::get('password'))
     );
 
