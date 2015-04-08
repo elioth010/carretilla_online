@@ -16,9 +16,18 @@ Route::any('route', function()
 	return View::make('hello');
 });
 
+<<<<<<< HEAD
 //Route::get('/', "HomeController@showWelcome");
+=======
+//USER
+Route::get('/', "HomeController@showWelcome");
+>>>>>>> 27f4715cd7df939480c15b51aec50045204764e6
 Route::get('/users', "UserController@showUser");
+Route::get('/users/add', "UserController@addUser");
+Route::get('/users/update', "UserController@updateUser");
+Route::get('/users/delete', "UserController@deleteUser");
 
+<<<<<<< HEAD
 Route::get('/', array('as' => 'home', function () { 
     return View::make("home");
 }));
@@ -64,3 +73,16 @@ Route::filter('auth', function(){
         }
 });
 
+=======
+//ROLE
+Route::get('/roles', "RoleController@showRole");
+Route::get('/roles/add', "RoleController@addRole");
+Route::get('/roles/update', "RoleController@updateRole");
+Route::get('/roles/delete', "RoleController@deleteRole");
+
+//PRODUCT
+Route::get('/products', "ProductController@showProduct");
+Route::get('/products/add', "UserController@addProduct");
+Route::get('/products/update', "ProductController@updateProduct");
+Route::get('/products/delete', "ProductController@deleteProduct");
+>>>>>>> 27f4715cd7df939480c15b51aec50045204764e6
