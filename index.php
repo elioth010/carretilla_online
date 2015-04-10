@@ -1,4 +1,4 @@
 <?php 
-	header('Location: http://localhost/carretilla_online/public');
+	header('Location: http://173.208.154.228/carretilla_online/public');
 	die();
 ?>

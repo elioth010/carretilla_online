@@ -2341,3 +2341,10 @@ Stack trace:
 #9 /home/elioth010/PHPWorkspace/carretilla_online/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(641): Stack\StackedHttpKernel->handle(Object(Illuminate\Http\Request))
 #10 /home/elioth010/PHPWorkspace/carretilla_online/public/index.php(49): Illuminate\Foundation\Application->run()
 #11 {main} [] []
+[2015-04-10 02:47:55] production.ERROR: exception 'InvalidArgumentException' with message 'There are no commands defined in the "user" namespace.' in /var/www/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php:516
+Stack trace:
+#0 /var/www/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(550): Symfony\Component\Console\Application->findNamespace('user')
+#1 /var/www/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(190): Symfony\Component\Console\Application->find('user:generate')
+#2 /var/www/carretilla_online/vendor/symfony/console/Symfony/Component/Console/Application.php(124): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /var/www/carretilla_online/artisan(59): Symfony\Component\Console\Application->run()
+#4 {main} [] []
