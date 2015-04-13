@@ -1,8 +1,5 @@
-<<<<<<< HEAD
- 
-=======
 <?php 
-	header('Location: http://173.208.154.228/carretilla_online/public');
+	header('Location: http://'.$_SERVER['$SERVER_ADDR'].'/carretilla_online/public');
 	die();
 ?>
->>>>>>> origin/amorales
+
