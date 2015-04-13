@@ -16,15 +16,24 @@
                         </a>
                     </li>
                     @if(Auth::check())
-                    <li>{{ URL::route('profile') }}</li>
-                    <li>{{ URL::route('logout', 'Logout ('.Auth::user()->username.')') }}</li>
-                    @else
                     <li>
-                        <a href="{{ URL::route('login') }}">
+                        <a href="{{ URL::route('profile') }}">
                             <i class="icon-dashboard"></i>
-                            <span class="menu-text">Login</span>
+                            <span class="menu-text">Profile</span>
                         </a>
-                    </li>
+                        <li>
+                            <a href="{{ URL::route('logout') }}">
+                                <i class="icon-dashboard"></i>
+                                <span class="menu-text">Logout ('{{Auth::user()->username}}')</span>
+                            </a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ URL::route('login') }}">
+                                <i class="icon-dashboard"></i>
+                                <span class="menu-text">Login</span>
+                            </a>
+                        </li>
                     @endif
                 </ul>
             </div><!-- end nav -->

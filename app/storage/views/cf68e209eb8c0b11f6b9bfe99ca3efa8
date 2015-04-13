@@ -17,15 +17,24 @@
                         </a>
                     </li>
                     <?php if(Auth::check()): ?>
-                    <li><?php echo URL::route('profile'); ?></li>
-                    <li><?php echo URL::route('logout', 'Logout ('.Auth::user()->username.')'); ?></li>
-                    <?php else: ?>
                     <li>
-                        <a href="<?php echo URL::route('login'); ?>">
+                        <a href="<?php echo URL::route('profile'); ?>">
                             <i class="icon-dashboard"></i>
-                            <span class="menu-text">Login</span>
+                            <span class="menu-text">Profile</span>
                         </a>
-                    </li>
+                        <li>
+                            <a href="<?php echo URL::route('logout'); ?>">
+                                <i class="icon-dashboard"></i>
+                                <span class="menu-text">Logout ('<?php echo Auth::user()->username; ?>')</span>
+                            </a>
+                        </li>
+                    <?php else: ?>
+                        <li>
+                            <a href="<?php echo URL::route('login'); ?>">
+                                <i class="icon-dashboard"></i>
+                                <span class="menu-text">Login</span>
+                            </a>
+                        </li>
                     <?php endif; ?>
                 </ul>
             </div><!-- end nav -->

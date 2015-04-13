@@ -60,12 +60,12 @@ Route::filter('guest', function() {
 });
 
 Route::get('login', array('as' => 'login', function () {
-        return View::make('login');
+    return View::make('login');
 }))->before('guest');
 
 Route::get('logout', array('as' => 'logout', function () {
         
-    }))->before('auth');
+}))->before('auth');
 
 Route::get('profile', array('as' => 'profile', function () {
     return View::make('profile');

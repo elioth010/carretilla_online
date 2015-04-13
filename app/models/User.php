@@ -23,7 +23,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $hidden = array();
         
         public function getAuthIdentifier() {
-            return $this->username;
+            return $this->getKey();
         }
 
         public function getAuthPassword() {
@@ -31,11 +31,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         }
         
         public function getRememberToken() {
-            return null;
+            return $this->remember_token;
         }
         
         public function getRememberTokenName() {
-            return null;
+            
         }
 
         public function setRememberToken($value) {
