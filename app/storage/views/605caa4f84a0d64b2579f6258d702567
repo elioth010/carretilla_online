@@ -6,24 +6,24 @@
 <div id="flash_error"><?php echo Session::get('flash_error'); ?></div>
 <?php endif; ?>
 
-<section class="container">
-    <div class="login">
-        <h1>Login to Web App</h1>
-        <form method="post" action="login">
-            <p><input type="text" name="username" value="" placeholder="Username or Email"></p>
-            <p><input type="password" name="password" value="" placeholder="Password"></p>
-            <p class="remember_me">
+<section class="login">
+    <div class="login-form">
+		<form method="post" action="login">
+			<h1>Login to Web App</h1>
+			<input type="text" name="username" value="" placeholder="Username or Email">
+			<input type="password" name="password" value="" placeholder="Password">
+			<p class="remember_me">
                 <label>
                     <input type="checkbox" name="remember_me" id="remember_me">
                     Remember me on this computer
                 </label>
             </p>
-            <p class="submit"><input type="submit" name="commit" value="Login"></p>
-        </form>
-    </div>
+			<input value="Login" type="submit">
 
-    <div class="login-help">
-        <p>Forgot your password? <a href="index.php">Click here to reset it</a>.</p>
+			<div class="login-help">
+        		<p>Forgot your password? <a href="index.php">Click here to reset it</a>.</p>
+    		</div>
+		</form>
     </div>
 </section>
 <?php $__env->stopSection(); ?>
