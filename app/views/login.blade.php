@@ -11,7 +11,7 @@
 <section class="login">
     <div class="login-form">
 		<form method="post" action="login">
-			<h1>Login to Web App</h1>
+			<h1>Enter your credentials</h1>
 			<input type="text" name="username" value="" placeholder="Username or Email">
 			<input type="password" name="password" value="" placeholder="Password">
 			<p class="remember_me">
