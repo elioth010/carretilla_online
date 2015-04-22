@@ -7,7 +7,7 @@ class Role extends Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'role';
+	protected $table = 'roles';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

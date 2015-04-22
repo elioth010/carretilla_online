@@ -7,14 +7,14 @@
 @if (Session::has('flash_error'))
 <div id="flash_error">{{ Session::get('flash_error') }}</div>
 @endif
-	<div class="single_center">
-		<dl class="dl-horizontal">
-			<dt>Name</dt>
-				<dd>{{$user -> name}}</dd>
-			<dt>Email</dt>
-				<dd>{{$user -> email}}</dd>
-			<dt>Age</dt>
-				<dd>{{$user -> age}} Years old</dd>
-		</dl>
-	</div>
+<div class="single_center">
+    <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd>{{Auth::user()->name}}</dd>
+        <dt>Email</dt>
+        <dd>{{Auth::user()->email}}</dd>
+        <dt>Age</dt>
+        <dd>{{Auth::user()-> age}} Years old</dd>
+    </dl>
+</div>
 @stop

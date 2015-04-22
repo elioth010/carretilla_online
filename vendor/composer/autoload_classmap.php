@@ -1581,6 +1581,7 @@ return array(
     'System_SSH_Agent' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH/Agent.php',
     'System_SSH_Agent_Identity' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH/Agent.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
+    'UpdateMenuTable' => $baseDir . '/app/database/migrations/2015_04_22_012711_update_menu_table.php',
     'User' => $baseDir . '/app/models/User.php',
     'UserController' => $baseDir . '/app/controllers/UserController.php',
     'UserRole' => $baseDir . '/app/models/UserRole.php',

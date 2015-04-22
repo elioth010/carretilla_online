@@ -20,7 +20,7 @@ Route::get('/users', "UserController@showUser");
 Route::get('/users/add', "UserController@addUser");
 Route::get('/users/update', "UserController@updateUser");
 Route::get('/users/delete', "UserController@deleteUser");
-Route::get('/users/{id}', array('before' => 'auth',
+Route::get('/profile/', array('before' => 'auth',
             'uses' => 'UserController@showProfile'));
 
 Route::get('/', array('as' => 'home', function () {
@@ -50,9 +50,7 @@ Route::get('logout', array('as' => 'logout', function () {
     return Redirect::route('home')->with('flash_notice', 'You are successfully logged out.');
 }))->before('auth');
 
-Route::get('profile', array('as' => 'profile', function () {
-        
-}));
+Route::get('profile', "UserController@showProfile")->before('auth');
 
 Route::get('/roles', "RoleController@showRole");
 Route::get('/roles/add', "RoleController@addRole");

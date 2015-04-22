@@ -72,15 +72,7 @@
       <a class="navbar-brand" href="#">Carretilla Online</a>
     </div>
     <div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="{{ URL::route('home') }}">Home</a></li>
-		@if(Auth::check())
-        <li><a href="{{ URL::route('profile') }}">Profile</a></li>
-        <li><a href="{{ URL::route('logout') }}">Logout ('{{Auth::user()->username}}')</a></li>
-		@else
-        <li><a href="{{ URL::route('login') }}">Login</a></li>
-		@endif
-      </ul>
+        @include('menu', array('menus'=>MenuController::getMenus()))
     </div>
   </div>
 </nav>	

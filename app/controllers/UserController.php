@@ -22,10 +22,7 @@ class UserController extends BaseController {
         // En este caso le estamos pasando un array con todos los usuarios
 	}
 	
-	public function showProfile($id){
-		$id = Auth::user();
-		$users = User::find($id);
-		return View::make('profile', array('users' => $users));
-		//
+	public function showProfile(){
+            return View::make('profile');
 	}
 }
