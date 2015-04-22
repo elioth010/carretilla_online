@@ -1,0 +1,19 @@
+<?php $__env->startSection('content'); ?>
+<h1>User Profile</h1>
+
+<!-- check for login error flash var -->
+<?php if(Session::has('flash_error')): ?>
+<div id="flash_error"><?php echo Session::get('flash_error'); ?></div>
+<?php endif; ?>
+<div class="single_center">
+    <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd><?php echo Auth::user()->name; ?></dd>
+        <dt>Email</dt>
+        <dd><?php echo Auth::user()->email; ?></dd>
+        <dt>Age</dt>
+        <dd><?php echo Auth::user()-> age; ?> Years old</dd>
+    </dl>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -145,7 +145,7 @@ div.etalage_description.rtl{ direction:rtl; text-align:right }
  }
  .etalage_zoom_area div{
 	width:10 !important;
-	display:none; !important;
+	display:none !important;
 }
 ul#etalage {
 width: 100% !important;

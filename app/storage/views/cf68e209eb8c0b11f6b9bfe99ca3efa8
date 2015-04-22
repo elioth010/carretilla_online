@@ -79,15 +79,7 @@
       <a class="navbar-brand" href="#">Carretilla Online</a>
     </div>
     <div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="<?php echo URL::route('home'); ?>">Home</a></li>
-		<?php if(Auth::check()): ?>
-        <li><a href="<?php echo URL::route('profile'); ?>">Profile</a></li>
-        <li><a href="<?php echo URL::route('logout'); ?>">Logout ('<?php echo Auth::user()->username; ?>')</a></li>
-		<?php else: ?>
-        <li><a href="<?php echo URL::route('login'); ?>">Login</a></li>
-		<?php endif; ?>
-      </ul>
+        <?php echo $__env->make('menu', array('menus'=>MenuController::getMenus()), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     </div>
   </div>
 </nav>	
