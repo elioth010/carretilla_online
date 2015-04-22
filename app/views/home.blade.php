@@ -395,7 +395,7 @@
 			 		 <h3>Recommended Items</h3>
 			 		 <ul class="item_box">
 			 		 	<li class="item_box-left">
-							{{ HTML::image('images/pic10.jpg', '', array('class' => 'img-responsive')) }}
+							{{ HTML::image('web/images/pic10.jpg', '', array('class' => 'img-responsive')) }}
 			 		 	</li>
 			 		 	<li class="item_box-right">
 			 		 		<h4>Fashion Up</h4>
@@ -407,7 +407,7 @@
 			 		 </ul>
 			 		 <ul class="item_box">
 			 		 	<li class="item_box-left">
-							{{ HTML::image('images/pic11.jpg', '', array('class' => 'img-responsive')) }}
+							{{ HTML::image('web/images/pic11.jpg', '', array('class' => 'img-responsive')) }}
 			 		 	</li>
 			 		 	<li class="item_box-right">
 			 		 		<h4>New Items</h4>
@@ -419,7 +419,7 @@
 			 		 </ul>
 			 		 <ul class="item_box">
 			 		 	<li class="item_box-left">
-							{{ HTML::image('images/pic13.jpg', '', array('class' => 'img-responsive')) }}
+							{{ HTML::image('web/images/pic13.jpg', '', array('class' => 'img-responsive')) }}
 			 		 	</li>
 			 		 	<li class="item_box-right">
 			 		 		<h4>New Items</h4>
@@ -431,7 +431,7 @@
 			 		 </ul>
 			 		 <ul class="item_box">
 			 		 	<li class="item_box-left">
-							{{ HTML::image('images/pic12.jpg', '', array('class' => 'img-responsive')) }}
+							{{ HTML::image('web/images/pic12.jpg', '', array('class' => 'img-responsive')) }}
 			 		 	</li>
 			 		 	<li class="item_box-right">
 			 		 		<h4>New Items</h4>
@@ -443,7 +443,7 @@
 			 		 </ul>
 			 		 <ul class="item_box item_box1">
 			 		 	<li class="item_box-left">
-							{{ HTML::image('images/pic10.jpg', 'a picture', array('class' => 'img-responsive')) }}
+							{{ HTML::image('web/images/pic10.jpg', 'a picture', array('class' => 'img-responsive')) }}
 			 		 	</li>
 			 		 	<li class="item_box-right">
 			 		 		<h4>Fashion Up</h4>

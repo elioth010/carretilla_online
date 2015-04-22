@@ -20,6 +20,8 @@ Route::get('/users', "UserController@showUser");
 Route::get('/users/add', "UserController@addUser");
 Route::get('/users/update', "UserController@updateUser");
 Route::get('/users/delete', "UserController@deleteUser");
+Route::get('/users/{id}', array('before' => 'auth',
+            'uses' => 'UserController@showProfile'));
 
 Route::get('/', array('as' => 'home', function () {
         return View::make("home");
