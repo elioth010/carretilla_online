@@ -405,7 +405,7 @@
 			 		 <h3>Recommended Items</h3>
 			 		 <ul class="item_box">
 			 		 	<li class="item_box-left">
-							<?php echo HTML::image('images/pic10.jpg', '', array('class' => 'img-responsive')); ?>
+							<?php echo HTML::image('web/images/pic10.jpg', '', array('class' => 'img-responsive')); ?>
 
 			 		 	</li>
 			 		 	<li class="item_box-right">
@@ -418,7 +418,7 @@
 			 		 </ul>
 			 		 <ul class="item_box">
 			 		 	<li class="item_box-left">
-							<?php echo HTML::image('images/pic11.jpg', '', array('class' => 'img-responsive')); ?>
+							<?php echo HTML::image('web/images/pic11.jpg', '', array('class' => 'img-responsive')); ?>
 
 			 		 	</li>
 			 		 	<li class="item_box-right">
@@ -431,7 +431,7 @@
 			 		 </ul>
 			 		 <ul class="item_box">
 			 		 	<li class="item_box-left">
-							<?php echo HTML::image('images/pic13.jpg', '', array('class' => 'img-responsive')); ?>
+							<?php echo HTML::image('web/images/pic13.jpg', '', array('class' => 'img-responsive')); ?>
 
 			 		 	</li>
 			 		 	<li class="item_box-right">
@@ -444,7 +444,7 @@
 			 		 </ul>
 			 		 <ul class="item_box">
 			 		 	<li class="item_box-left">
-							<?php echo HTML::image('images/pic12.jpg', '', array('class' => 'img-responsive')); ?>
+							<?php echo HTML::image('web/images/pic12.jpg', '', array('class' => 'img-responsive')); ?>
 
 			 		 	</li>
 			 		 	<li class="item_box-right">
@@ -457,7 +457,7 @@
 			 		 </ul>
 			 		 <ul class="item_box item_box1">
 			 		 	<li class="item_box-left">
-							<?php echo HTML::image('images/pic10.jpg', 'a picture', array('class' => 'img-responsive')); ?>
+							<?php echo HTML::image('web/images/pic10.jpg', 'a picture', array('class' => 'img-responsive')); ?>
 
 			 		 	</li>
 			 		 	<li class="item_box-right">
