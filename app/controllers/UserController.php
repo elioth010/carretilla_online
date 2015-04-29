@@ -22,6 +22,16 @@ class UserController extends BaseController {
         // En este caso le estamos pasando un array con todos los usuarios
 	}
 	
+	public function addUser(){
+		$user = new User;
+	    $user->username = Input::get('username');
+		$user->email = Input::get('email');
+	    $user->name = Input::get('name');
+		$user->save();
+
+		return View::make('user.add');
+	}
+	
 	public function showProfile(){
             return View::make('profile');
 	}
