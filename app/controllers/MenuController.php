@@ -23,7 +23,7 @@ class MenuController extends Controller {
         foreach ($menus as $menu) {
             if (Auth::check()) {
                 $user = Auth::user();
-                $userRole = $user->roles()->getResults();
+                $userRole = $user->roles()->getResults(); 
                 $menuRole = $menu->roles()->getResults();
                 for ($i = 0; $i < count($menuRole); $i++) {
                     for ($j = 0; $j < count($userRole); $j++) {
@@ -46,5 +46,9 @@ class MenuController extends Controller {
         //$this->layout->menu = View::make("menu", array("menus",$userMenu));
         return $userMenu;
     }
-
+    
+    public function showAllMenus(){
+        $menus = Menu::all();
+        return View::make("admin.menu.list", array("menus"=>$menus));
+    }
 }

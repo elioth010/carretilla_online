@@ -52,6 +52,8 @@ Route::get('logout', array('as' => 'logout', function () {
 
 Route::get('profile', "UserController@showProfile")->before('auth');
 
+Route::get('admin/menu', "MenuController@showAllMenus")->before('auth');
+
 Route::get('/roles', "RoleController@showRole");
 Route::get('/roles/add', "RoleController@addRole");
 Route::get('/roles/update', "RoleController@updateRole");

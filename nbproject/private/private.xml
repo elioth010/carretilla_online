@@ -7,6 +7,7 @@
             <file>file:/home/elioth010/WebSites/html/carretilla_online/app/views/menu.blade.php</file>
             <file>file:/home/elioth010/WebSites/html/carretilla_online/app/views/layout.blade.php</file>
             <file>file:/home/elioth010/WebSites/html/carretilla_online/app/database/seeds/DatabaseSeeder.php</file>
+            <file>file:/home/elioth010/WebSites/html/carretilla_online/app/models/User.php</file>
             <file>file:/home/elioth010/WebSites/html/carretilla_online/app/controllers/UserController.php</file>
             <file>file:/home/elioth010/WebSites/html/carretilla_online/app/views/users.blade.php</file>
         </group>
