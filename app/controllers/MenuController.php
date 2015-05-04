@@ -67,7 +67,8 @@ class MenuController extends Controller {
             'description' => 'required',
             'title' => 'required',
             'route' => 'required',
-            'roles' => 'required'
+            'roles' => 'required',
+            'menu_image' => 'mimes:jpeg,bmp,png'
         );
 
         $validator = Validator::make(Input::all(), $rules);
