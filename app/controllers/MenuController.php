@@ -79,6 +79,7 @@ class MenuController extends Controller {
             return Redirect::to('menu/create')->withErrors($validator)->withInput();
         } else {
             // store
+            $filename = "";
              if (Input::hasFile('menu_image')) {
                 if (Input::file('menu_image')->isValid()) {
                     Input::file('menu_image')->move(MenuController::imagePath());
