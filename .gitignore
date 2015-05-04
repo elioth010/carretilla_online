@@ -8,4 +8,4 @@ composer.lock
 Thumbs.db
 /nbproject/private/
 *.log
-app/storage/*
+/app/storage/*
