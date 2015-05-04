@@ -17,7 +17,7 @@ class MenuController extends Controller {
 
     static public function getMenus() {
 
-        $menus = Menu::all();
+        $menus = Menu::orderBy('order', 'ASC')->get();
         $userMenu = array();
 
         foreach ($menus as $menu) {
@@ -47,7 +47,7 @@ class MenuController extends Controller {
     }
 
     public function index() {
-        $menus = Menu::all();
+        $menus = Menu::orderBy('order')->get();;
         return View::make("admin.menu.list", array("menus" => $menus));
     }
 
@@ -68,6 +68,7 @@ class MenuController extends Controller {
             'title' => 'required',
             'route' => 'required',
             'roles' => 'required',
+            'order' => 'required|numeric',
             'menu_image' => 'mimes:jpeg,bmp,png'
         );
 
@@ -87,6 +88,7 @@ class MenuController extends Controller {
             $menu->image = MenuController::imagePath() . Input::file('menu_image')->getClientOriginalName();
             $menu->title = Input::get('title');
             $menu->route = Input::get('route');
+            $menu->order = Input::get('order');
             $menu->save();
 
             foreach (Input::get('roles') as $roleId) {
@@ -104,7 +106,9 @@ class MenuController extends Controller {
             'description' => 'required',
             'title' => 'required',
             'route' => 'required',
-            'roles' => 'required'
+            'roles' => 'required',
+            'order' => 'required|numeric',
+            'menu_image' => 'mimes:jpeg,bmp,png'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -129,6 +133,7 @@ class MenuController extends Controller {
             }
             $menu->title = Input::get('title');
             $menu->route = Input::get('route');
+            $menu->order = Input::get('order');
             $menu->save();
 
             foreach (Role::all() as $role) {

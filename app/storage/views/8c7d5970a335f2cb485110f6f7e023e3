@@ -68,6 +68,12 @@
             <?php echo Form::text('route', $menu->route, array('class' => 'form-control','disabled')); ?>
 
         </div>
+        <div class="form-group">
+            <?php echo Form::label('order', 'Order:'); ?>
+
+            <?php echo Form::text('order', $menu->order, array('class' => 'form-control', 'disabled')); ?>
+
+        </div>
         <a href="<?php echo URL::to('admin/menu'); ?>" class="btn btn-danger">Return</a>
     </div>
 </div>

@@ -55,6 +55,11 @@
             {{ Form::label('route', 'Route:') }}
             {{ Form::text('route', Input::old('route'), array('class' => 'form-control')) }}
         </div>
+        
+        <div class="form-group">
+            {{ Form::label('order', 'Order:') }}
+            {{ Form::text('order', Input::old('order'), array('class' => 'form-control')) }}
+        </div>
 
         {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
         <a href="{{URL::to('admin/menu')}}" class="btn btn-danger">Cancel</a>

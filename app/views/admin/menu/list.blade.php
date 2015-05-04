@@ -26,6 +26,7 @@
                         <th>Image</th>
                         <th>Title</th>
                         <th>Route</th>
+                        <th>Order</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -37,6 +38,7 @@
                         <td>{{str_replace(MenuController::imagePath(), "" ,$menu->image)}}</td>
                         <td>{{$menu->title}}</td>
                         <td>{{$menu->route}}</td>
+                        <td>{{$menu->order}}</td>
                         <td> 
                             <a href="{{URL::to('admin/menu/'.$menu->id)}}" class="btn btn-info">View</a>
                             <a href="{{URL::to('admin/menu/'.$menu->id.'/edit')}}" class="btn btn-default">Edit</a>

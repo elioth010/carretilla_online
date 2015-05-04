@@ -56,6 +56,10 @@
             {{ Form::label('route', 'Route:') }}
             {{ Form::text('route', $menu->route, array('class' => 'form-control','disabled')) }}
         </div>
+        <div class="form-group">
+            {{ Form::label('order', 'Order:') }}
+            {{ Form::text('order', $menu->order, array('class' => 'form-control', 'disabled')) }}
+        </div>
         <a href="{{ URL::to('admin/menu') }}" class="btn btn-danger">Return</a>
     </div>
 </div>
