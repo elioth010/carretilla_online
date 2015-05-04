@@ -49,7 +49,7 @@ class UserController extends BaseController {
                 $user->roles()->attach($roleId);
             }
             // redirect
-            Session::flash('message', 'Successfully created menu!');
+            Session::flash('message', 'Successfully created user!');
             return Redirect::to('admin/user');
         }
     }
@@ -93,7 +93,7 @@ class UserController extends BaseController {
                 }
             }
             // redirect
-            Session::flash('message', 'Successfully updated menu!');
+            Session::flash('message', 'Successfully updated user!');
             return Redirect::to('admin/user');
         }
     }
@@ -117,7 +117,7 @@ class UserController extends BaseController {
         $user->delete();
 
         // redirect
-        Session::flash('message', 'Successfully deleted the menu!');
+        Session::flash('message', 'Successfully deleted the user!');
         return Redirect::to('admin/user');
     }
 

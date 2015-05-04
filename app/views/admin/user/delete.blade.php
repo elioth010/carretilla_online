@@ -21,7 +21,7 @@
         <!-- if there are creation errors, they will show here -->
         {{ HTML::ul($errors->all()) }}
 
-        {{ Form::open(array('url' => 'admin/menu/'.$user->id)) }}
+        {{ Form::open(array('url' => 'admin/user/'.$user->id)) }}
         {{ Form::token() }}
         <div class="form-group">
             {{ Form::label('username', 'Username:') }}
