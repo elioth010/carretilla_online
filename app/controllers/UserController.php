@@ -57,6 +57,7 @@ class UserController extends BaseController {
     public function update($id) {
          $rules = array(
             'username' => 'required',
+            'password' => 'min:6',
             'email' => 'required|email',
             'name' => 'required',
             'age' => 'required|numeric',
@@ -73,7 +74,9 @@ class UserController extends BaseController {
             $user = User::find($id);
             $user->name = Input::get('name');
             $user->username = Input::get('username');
-            $user->password = Hash::make(Input::get('password'));
+            if(Input::get('password')!==""){
+                $user->password = Hash::make(Input::get('password'));
+            }
             $user->email = Input::get('email');
             $user->age = Input::get('age');
             $user->save();

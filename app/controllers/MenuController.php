@@ -26,10 +26,16 @@ class MenuController extends Controller {
                 $userRole = $user->roles()->getResults();
                 $menuRole = $menu->roles()->getResults();
                 for ($i = 0; $i < count($menuRole); $i++) {
+                    $found=false;
                     for ($j = 0; $j < count($userRole); $j++) {
                         if ($menuRole[$i]->id === $userRole[$j]->id) {
-                            $userMenu[] = $menu;
+                            $found = true;
+                            break;
                         }
+                    }
+                    if($found){
+                        $userMenu[] = $menu;
+                        break;
                     }
                 }
             } else {

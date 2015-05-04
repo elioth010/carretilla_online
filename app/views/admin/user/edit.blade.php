@@ -28,15 +28,20 @@
         </div>
 
         <div class="form-group">
+            {{ Form::label('password', 'Password:') }}
+            {{ Form::password('password',array('class' => 'form-control')) }}
+        </div>
+
+        <div class="form-group">
             {{ Form::label('email', 'Email:') }}
             {{ Form::text('email', $user->email, array('class' => 'form-control')) }}
         </div>
-        
+
         <div class="form-group">
             {{ Form::label('name', 'Name:') }}
             {{ Form::text('name', $user->name, array('class' => 'form-control')) }}
         </div>
-        
+
         <div class="form-group">
             {{ Form::label('age', 'Age:') }}
             {{ Form::text('age', $user->age, array('class' => 'form-control')) }}
