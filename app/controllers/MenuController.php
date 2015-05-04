@@ -79,13 +79,18 @@ class MenuController extends Controller {
             return Redirect::to('menu/create')->withErrors($validator)->withInput();
         } else {
             // store
-            if (Input::file('menu_image')->isValid()) {
-                Input::file('menu_image')->move(MenuController::imagePath());
+             if (Input::hasFile('menu_image')) {
+                if (Input::file('menu_image')->isValid()) {
+                    Input::file('menu_image')->move(MenuController::imagePath());
+                    $filename = Input::file('menu_image')->getClientOriginalName();
+                }
             }
             $menu = new Menu();
             $menu->name = Input::get('name');
             $menu->description = Input::get('description');
-            $menu->image = MenuController::imagePath() . Input::file('menu_image')->getClientOriginalName();
+            if ($filename !== "") {
+                $menu->image = MenuController::imagePath() . $filename;
+            }
             $menu->title = Input::get('title');
             $menu->route = Input::get('route');
             $menu->order = Input::get('order');
