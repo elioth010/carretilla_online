@@ -1,0 +1,74 @@
+<?php $__env->startSection('content'); ?>
+
+<div class="single_center">
+    <!-- check for login error flash var -->
+    <?php if(Session::has('flash_error')): ?>
+    <div id="flash_error"><?php echo Session::get('flash_error'); ?></div>
+    <?php endif; ?>
+
+    <?php if(Session::has('message')): ?>
+    <ul class="tick tick1">
+        <i class="icon4"> </i>
+        <li class="icon4_desc"><p><?php echo Session::get('message'); ?></p></li>
+    </ul>
+    <?php endif; ?>
+
+    <div id="create-container" class="container">
+        <h1>Delete <?php echo $user->name; ?></h1>
+
+        <!-- if there are creation errors, they will show here -->
+        <?php echo HTML::ul($errors->all()); ?>
+
+
+        <?php echo Form::open(array('url' => 'admin/menu/'.$user->id)); ?>
+
+        <?php echo Form::token(); ?>
+
+        <div class="form-group">
+            <?php echo Form::label('username', 'Username:'); ?>
+
+            <?php echo Form::text('username', $user->username, array('class' => 'form-control', 'disabled')); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('email', 'Email:'); ?>
+
+            <?php echo Form::text('email', $user->email, array('class' => 'form-control', 'disabled')); ?>
+
+        </div>
+        
+        <div class="form-group">
+            <?php echo Form::label('name', 'Name:'); ?>
+
+            <?php echo Form::text('name', $user->name, array('class' => 'form-control', 'disabled')); ?>
+
+        </div>
+        
+        <div class="form-group">
+            <?php echo Form::label('age', 'Age:'); ?>
+
+            <?php echo Form::text('age', $user->age, array('class' => 'form-control', 'disabled')); ?>
+
+        </div>
+        
+        <div class="form-group">
+            <?php echo Form::label('role', 'Role:'); ?>
+
+            <br>
+            <?php foreach($user->roles()->getResults() as $checkbox): ?>
+            <?php echo Form::checkbox($checkbox->name, $checkbox->id, true , array("style", "padding-left:1.5em", 'disabled')); ?><label style="padding-right:0.5em" ><?php echo $checkbox->name.''; ?></label>
+            <?php endforeach; ?>
+        </div>
+        
+        <a href="<?php echo URL::to('admin/user'); ?>" class="btn btn-success">Return</a>
+        <?php echo Form::hidden('_method', 'DELETE'); ?>
+
+        <?php echo Form::submit('Delete', array('class' => 'btn btn-danger')); ?>
+
+        <?php echo Form::close(); ?>
+
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

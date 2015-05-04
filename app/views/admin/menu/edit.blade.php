@@ -16,7 +16,7 @@
     @endif
     
     <div id="create-container" class="container" style="padding-top: 5em;">
-        <h1>Show {{$menu->name}}</h1>
+        <h1>Edit {{$menu->name}}</h1>
 
         <!-- if there are creation errors, they will show here -->
         {{ HTML::ul($errors->all()) }}

@@ -16,10 +16,6 @@ Route::any('route', function() {
 });
 
 //Route::get('/', "HomeController@showWelcome");
-Route::get('/users', "UserController@showUser");
-Route::get('/users/add', "UserController@addUser");
-Route::get('/users/update', "UserController@updateUser");
-Route::get('/users/delete', "UserController@deleteUser");
 Route::get('/profile/', array('before' => 'auth',
     'uses' => 'UserController@showProfile'));
 
@@ -77,3 +73,14 @@ Route::get('/product', "ProductController@showProduct");
 Route::get('/products/add', "UserController@addProduct");
 Route::get('/products/update', "ProductController@updateProduct");
 Route::get('/products/delete', "ProductController@deleteProduct");
+
+//Users
+Route::get('admin/user', "UserController@index")->before('auth');
+Route::get('admin/user/create', "UserController@create")->before('auth');
+Route::post('admin/user', "UserController@store")->before('auth')->before('csrf');
+Route::get('admin/user/{id}', "UserController@show")->before('auth');
+Route::get('admin/user/{id}/edit', "UserController@edit")->before('auth');
+Route::get('admin/user/{id}/delete', "UserController@destroy")->before('auth');
+Route::post('admin/user', "UserController@store")->before('auth')->before('csrf');
+Route::post('admin/user/{id}', "UserController@update")->before('auth')->before('csrf');
+Route::delete('admin/user/{id}', "UserController@delete")->before('auth')->before('csrf');
