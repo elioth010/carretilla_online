@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://localhost/carretilla_online/public',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => 'YourSecretKey!!!',
+	'key' => 'FQlsKy10awD16JmySw2X5v2ouKHdCViO',
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 

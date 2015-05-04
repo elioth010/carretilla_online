@@ -1,0 +1,74 @@
+<?php $__env->startSection('content'); ?>
+<!-- check for login error flash var -->
+<?php if(Session::has('flash_error')): ?>
+<div id="flash_error"><?php echo Session::get('flash_error'); ?></div>
+<?php endif; ?>
+
+<?php if(Session::has('message')): ?>
+<ul class="tick tick1">
+    <i class="icon4"> </i>
+    <li class="icon4_desc"><p><?php echo Session::get('message'); ?></p></li>
+</ul>
+<?php endif; ?>
+
+<div class="single_center">
+    <div id="create-container" class="container">
+        <h1>Show <?php echo $menu->name; ?></h1>
+
+        <!-- if there are creation errors, they will show here -->
+        <?php echo HTML::ul($errors->all()); ?>
+
+
+        <?php echo Form::open(array('url' => 'admin/menu', 'method'=>'post', 'files' => true)); ?>
+
+        <?php echo Form::token(); ?>
+
+        <div class="form-group">
+            <?php echo Form::label('name', 'Name:'); ?>
+
+            <?php echo Form::text('name', $menu->name, array('class' => 'form-control', 'disabled')); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('description', 'Description:'); ?>
+
+            <?php echo Form::text('description', $menu->description, array('class' => 'form-control', 'disabled')); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('image', 'Image:'); ?>
+
+            <?php echo Form::text('menu_image',str_replace(MenuController::imagePath(), "" ,$menu->image),array('disabled', 'class' => 'form-control')); ?>
+
+        </div>
+        
+        <div class="form-group">
+            <?php echo Form::label('title', 'Title:'); ?>
+
+            <?php echo Form::text('title', $menu->title, array('class' => 'form-control','disabled')); ?>
+
+        </div>
+        
+        <div class="form-group">
+            <?php echo Form::label('role', 'Role:'); ?>
+
+            <br>
+            <?php foreach($menu->roles()->getResults() as $checkbox): ?>
+                <?php echo Form::checkbox($checkbox->name, $checkbox->id, true , array("style", "padding-left:1.5em", 'disabled')); ?><label style="padding-right:0.5em" ><?php echo $checkbox->name.''; ?></label>
+            <?php endforeach; ?>
+<!--            Form::select('role', ['' => ''] +$menu->roles()->getResults()->lists('name', 'id')) -->
+        </div>
+       
+        <div class="form-group">
+            <?php echo Form::label('route', 'Route:'); ?>
+
+            <?php echo Form::text('route', $menu->route, array('class' => 'form-control','disabled')); ?>
+
+        </div>
+        <a href="<?php echo URL::to('admin/menu'); ?>" class="btn btn-danger">Return</a>
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

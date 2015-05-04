@@ -9,6 +9,7 @@
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 {{ HTML::script('web/js/jquery-1.11.1.min.js') }}
+{{ HTML::script('web/js/bootstrap.js') }}
 <!-- Custom Theme files -->
 {{ HTML::style('web/css/style.css') }}
 
@@ -81,11 +82,12 @@
 @if(Session::has('flash_notice'))
 	<div id="flash_notice">{{ Session::get('flash_notice') }}</div>
 @endif
-
-@yield('content')
+<div style="margin-top: 5%">
+    @yield('content')
+</div>
 	
       <div class="copy">
-		 <p>© 2015 Template by <a href="http://elblogdeklank.net" target="_blank"> @klank4135</a></p>
+<!--		 <p>© 2015 Template by <a href="http://elblogdeklank.net" target="_blank"> @klank4135</a></p>-->
 	  </div>
 </body>
 </html>

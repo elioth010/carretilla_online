@@ -1,12 +1,20 @@
 @extends('layout')
 
 @section('content')
-@if (Session::has('flash_error'))
-<div class="tooltip_box1" id="flash_error">{{ Session::get('flash_error') }}</div>
-@endif
 <section>
     <div id=principal class="container" >
-        <a href="#" class="btn btn-success">Add</a>
+        @if (Session::has('flash_error'))
+        <div class="tooltip_box1" id="flash_error">{{ Session::get('flash_error') }}</div>
+        @endif
+
+        @if (Session::has('message'))
+        <ul class="tick tick1">
+            <i class="icon4"> </i>
+            <li class="icon4_desc"><p>{{ Session::get('message') }}</p></li>
+        </ul>
+        @endif
+
+        <a href="{{action("MenuController@create")}}" class="btn btn-success">Add</a>
         <br/>
         <br/>
         <div class="grid_1" style="background: #ffffff; padding: 2px;">    
@@ -26,13 +34,13 @@
                     <tr>
                         <td>{{$menu->name}}</td>
                         <td>{{$menu->description}}</td>
-                        <td>{{$menu->image}}</td>
+                        <td>{{str_replace(MenuController::imagePath(), "" ,$menu->image)}}</td>
                         <td>{{$menu->title}}</td>
                         <td>{{$menu->route}}</td>
                         <td> 
-                            <a href="#" class="btn btn-info">View</a>
-                            <a href="#" class="btn btn-default">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="{{URL::to('admin/menu/'.$menu->id)}}" class="btn btn-info">View</a>
+                            <a href="{{URL::to('admin/menu/'.$menu->id.'/edit')}}" class="btn btn-default">Edit</a>
+                            <a href="{{URL::to('admin/menu/'.$menu->id.'/delete')}}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                     @endforeach

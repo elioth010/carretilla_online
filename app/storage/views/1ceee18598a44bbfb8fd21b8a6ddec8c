@@ -1,15 +1,5 @@
-<!--    <li class="active"><a href="<?php echo URL::route('home'); ?>">Home</a></li>
-<!--<?php if(Auth::check()): ?>
-    
-    <li><a href="<?php echo URL::route('profile'); ?>">Profile</a></li>
-    <li><a href="<?php echo URL::route('logout'); ?>">Logout ('<?php echo Auth::user()->username; ?>')</a></li>
-    <?php else: ?>
-    <li><a href="<?php echo URL::route('login'); ?>">Login</a></li>
-<?php endif; ?>
--->
-<!--<label value="<?php var_dump($menus) ?>"/>-->
 <ul class="nav navbar-nav">
     <?php foreach($menus as $menu): ?>
-    <li title="<?php echo $menu->title; ?>"><a href="<?php echo URL::route($menu->route); ?>"><?php echo $menu->title; ?></a></li>
+    <li title="<?php echo $menu->title; ?>"><a href="<?php echo URL::to($menu->route); ?>"><?php echo $menu->title; ?></a></li>
     <?php endforeach; ?> 
 </ul>

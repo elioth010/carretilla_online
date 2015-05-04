@@ -21,11 +21,15 @@ Route::get('/users/add', "UserController@addUser");
 Route::get('/users/update', "UserController@updateUser");
 Route::get('/users/delete', "UserController@deleteUser");
 Route::get('/profile/', array('before' => 'auth',
-            'uses' => 'UserController@showProfile'));
+    'uses' => 'UserController@showProfile'));
 
 Route::get('/', array('as' => 'home', function () {
         return View::make("home");
     }));
+
+Route::get('home', array('as' => 'home', function () {
+    return View::make("home");
+}));
 
 Route::post('login', function () {
     $user = array(
@@ -33,9 +37,9 @@ Route::post('login', function () {
         'password' => Input::get('password')
     );
 
-    if (Auth::attempt($user, Input::get('remember_me'))) {
-        Session::put('user',$user['username']);
-        return Redirect::route('home')->with('flash_notice', 'You are successfully logged in.');
+    if (Auth::attempt($user, (Input::has('remember_me')) ? true : false)) {
+        Session::put('user', $user['username']);
+        return Redirect::intended('home')->with('flash_notice', 'You are successfully logged in.');
     }
 
     // authentication failure! lets go back to the login page
@@ -45,21 +49,31 @@ Route::post('login', function () {
 Route::controller('password', 'RemindersController');
 
 Route::get('logout', array('as' => 'logout', function () {
-    Auth::logout();
+        Auth::logout();
 
-    return Redirect::route('home')->with('flash_notice', 'You are successfully logged out.');
-}))->before('auth');
+        return Redirect::route('home')->with('flash_notice', 'You are successfully logged out.');
+    }))->before('auth');
 
 Route::get('profile', "UserController@showProfile")->before('auth');
 
-Route::get('admin/menu', "MenuController@showAllMenus")->before('auth');
+Route::get('admin/menu', "MenuController@index")->before('auth');
+Route::get('admin/menu/create', "MenuController@create")->before('auth');
+Route::post('admin/menu', "MenuController@store")->before('auth')->before('csrf');
+Route::get('admin/menu/{id}', "MenuController@show")->before('auth');
+Route::get('admin/menu/{id}/edit', "MenuController@edit")->before('auth');
+Route::get('admin/menu/{id}/delete', "MenuController@destroy")->before('auth');
+Route::post('admin/menu', "MenuController@store")->before('auth')->before('csrf');
+Route::post('admin/menu/{id}', "MenuController@update")->before('auth')->before('csrf');
+Route::delete('admin/menu/{id}', "MenuController@delete")->before('auth')->before('csrf');
+
+Route::get('admin', "MenuController@index")->before('auth');
 
 Route::get('/roles', "RoleController@showRole");
 Route::get('/roles/add', "RoleController@addRole");
 Route::get('/roles/update', "RoleController@updateRole");
 Route::get('/roles/delete', "RoleController@deleteRole");
 
-Route::get('/products', "ProductController@showProduct");
+Route::get('/product', "ProductController@showProduct");
 Route::get('/products/add', "UserController@addProduct");
 Route::get('/products/update', "ProductController@updateProduct");
 Route::get('/products/delete', "ProductController@deleteProduct");
