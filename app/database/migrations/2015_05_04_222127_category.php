@@ -13,6 +13,13 @@ class Category extends Migration {
 	public function up()
 	{
 		//
+		Schema::create('category', function{
+			$t->increments('id');
+            $t->string('name', 600);
+            $t->unique('id');
+            $t->timestamps();
+            $t->softDeletes();
+		});
 	}
 
 	/**
@@ -23,6 +30,7 @@ class Category extends Migration {
 	public function down()
 	{
 		//
+		Schema::dropIfExists("category");
 	}
 
 }
