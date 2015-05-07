@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMenusRolesTable extends Migration {
+class AdminMenusRoles extends Migration {
 
     /**
      * Run the migrations.
@@ -11,12 +11,12 @@ class CreateMenusRolesTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('menus_roles', function($t) {
-            $t->integer('menu_id', false)->unsigned();
+        Schema::create('administration_menus_roles', function($t) {
+            $t->integer('admin_menu_id', false)->unsigned();
             $t->integer('role_id', false)->unsigned();
-            $t->primary(array('menu_id', 'role_id'));
+            $t->primary(array('admin_menu_id', 'role_id'));
             $t->foreign('role_id')->references('id')->on('roles');
-            $t->foreign('menu_id')->references('id')->on('menus');
+            $t->foreign('admin_menu_id')->references('id')->on('administration_menus');
             $t->timestamps();
             $t->softDeletes();
         }); //
@@ -28,7 +28,7 @@ class CreateMenusRolesTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::drop('menu_role');
+        Schema::drop('administration_menus_roles');
     }
 
 }

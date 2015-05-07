@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Marks extends Migration {
+class MovementsTypes extends Migration {
 
     /**
      * Run the migrations.
@@ -11,15 +11,14 @@ class Marks extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('marks', function($t) {
-            $t->string('code', 3);
-            $t->string('name', 600);
-            $t->string('product_range_initial', 10);
-            $t->string('product_range_final', 10);
-            $t->primary('code');
+        Schema::create('movements_type', function($t) {
+            $t->increments('id');
+            $t->string('name', 50);
+            $t->string('description');
+            $t->unique('name');
             $t->timestamps();
             $t->softDeletes();
-        }); //
+        });
     }
 
     /**
@@ -28,7 +27,7 @@ class Marks extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists("marks");
+        Schmea::dropIfExists('movements_type');
     }
 
 }

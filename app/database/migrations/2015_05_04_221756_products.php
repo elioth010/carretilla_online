@@ -12,17 +12,16 @@ class Products extends Migration {
      */
     public function up() {
         //
-		Schema::create('products', function{
-			$t->increments('id');
-            $t->string('code',10)->unsigned();
-			$t->string('mark',3);
+        Schema::create('products', function($t) {
+            $t->string('code', 10);
+            $t->string('mark', 3);
             $t->string('name', 600);
-			$t->double('price',10,2);
-			$t->primary('code');
-            $t->unique('code');
+            $t->decimal('price', 10, 2);
+            $t->primary('code');
+            $t->foreign('mark')->references('code')->on('marks');
             $t->timestamps();
             $t->softDeletes();
-		});
+        });
     }
 
     /**
@@ -32,7 +31,7 @@ class Products extends Migration {
      */
     public function down() {
         //
-		Schema::dropIfExists("products");
+        Schema::dropIfExists("products");
     }
 
 }
