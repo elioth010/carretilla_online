@@ -14,5 +14,6 @@ class Category extends Eloquent {
 	 *
 	 * @var array
 	 */
-
+        
+        protected $fillable = array('name');
 }

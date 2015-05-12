@@ -14,5 +14,7 @@ class Mark extends Eloquent {
 	 *
 	 * @var array
 	 */
+        
+        protected $fillable = array('code', 'name', 'product_range_initial', 'product_range_final');
 
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AdminMenusRoles extends Migration {
+class ActionsRoles extends Migration {
 
     /**
      * Run the migrations.
@@ -11,12 +11,14 @@ class AdminMenusRoles extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('administration_menus_roles', function($t) {
-            $t->integer('admin_menu_id', false)->unsigned();
+        Schema::create('actions_roles_menu', function($t) {
+            $t->integer('action_id', false)->unsigned();
             $t->integer('role_id', false)->unsigned();
-            $t->primary(array('admin_menu_id', 'role_id'));
+            $t->integer('menu_admin_id', false)->unsigned();
+            $t->primary(array('action_id', 'role_id', 'menu_admin_id'));
             $t->foreign('role_id')->references('id')->on('roles');
-            $t->foreign('admin_menu_id')->references('id')->on('administration_menus');
+            $t->foreign('action_id')->references('id')->on('actions');
+            $t->foreign('menu_admin_id')->references('id')->on('administration_menus');
             $t->timestamps();
             $t->softDeletes();
         }); //
@@ -28,7 +30,7 @@ class AdminMenusRoles extends Migration {
      * @return void
      */
     public function down() {
-        Schema::drop('administration_menus_roles');
+        Schema::dropIfExists("actions_roles");
     }
 
 }
