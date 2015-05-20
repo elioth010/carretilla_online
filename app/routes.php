@@ -47,8 +47,10 @@ Route::get('logout', array('as' => 'logout', function () {
 
 //Menu Routes
 Route::get('profile', "UserController@showProfile")->before('auth');
-Route::get('product', "ProductController@index");
+Route::get('product', "ProductController@listProducts");
+Route::put('order', "OrderController@addToCart")->before('auth');
 Route::get('orders', "OrderController@getMyOrders");
+Route::get('shooppingcart', "OrderController@viewCart")->before('auth');
 
 //Admin Routes
 Route::get('admin', "AdminController@index")->before('auth');

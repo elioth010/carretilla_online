@@ -139,5 +139,12 @@ class ProductController extends \BaseController {
     final public static function imagePath() {
         return '/home/elioth010/PHPWorkspace/carretilla_online/public/web/images/product/';
     }
-
+    
+    
+    //GENERAL View
+    
+    public function listProducts() {
+        $products = Product::orderBy('code')->get();
+        return View::make("product", array("products" => $products));
+    }
 }
