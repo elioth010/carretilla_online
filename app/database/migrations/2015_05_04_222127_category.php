@@ -1,11 +1,12 @@
 <?php
+class CategoryMigration extends Migration {
 
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
-
-class Category extends Migration {
-
-    /**
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	/**
      * Run the migrations.
      *
      * @return void
@@ -30,5 +31,4 @@ class Category extends Migration {
         //
         Schema::dropIfExists("category");
     }
-
 }

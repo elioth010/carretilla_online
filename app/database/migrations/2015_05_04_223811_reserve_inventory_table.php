@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Dispatch extends Migration {
+class ReserveInventoryTable extends Migration {
 
     /**
      * Run the migrations.
@@ -11,14 +10,13 @@ class Dispatch extends Migration {
      * @return void
      */
     public function up() {
-       Schema::create('dispatchs', function($t) {
+        Schema::create('reserve_inventories', function($t) {
             $t->increments('id');
+            $t->string('product_id', 10);
             $t->integer('order_id', false)->unsigned();
-            $t->dateTime('dispatch_date');
-            $t->enum('status', array('IN_PROCESS','DISPATCHED'));
-            $t->integer('user_dispatches', false)->unsigned();
+            $t->integer('stocks', false)->unsigned();
+            $t->foreign('product_id')->references('code')->on('products');
             $t->foreign('order_id')->references('id')->on('orders');
-            $t->foreign('user_dispatches')->references('id')->on('users');
             $t->timestamps();
             $t->softDeletes();
         });
@@ -30,7 +28,7 @@ class Dispatch extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists("dispatchs");
+        Schema::dropIfExists("reserve_inventories");
     }
 
 }

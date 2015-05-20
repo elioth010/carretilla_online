@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class OdersDetail extends Migration {
+class DispatchTable extends Migration {
 
     /**
      * Run the migrations.
@@ -11,14 +11,14 @@ class OdersDetail extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('orders_details', function($t) {
+       Schema::create('dispatchs', function($t) {
             $t->increments('id');
             $t->integer('order_id', false)->unsigned();
-            $t->string('product_id',10);
-            $t->integer('quantity', false)->unsigned();
-            $t->decimal('sub_total', 10, 2);
+            $t->dateTime('dispatch_date');
+            $t->enum('status', array('IN_PROCESS','DISPATCHED'));
+            $t->integer('user_dispatches', false)->unsigned();
             $t->foreign('order_id')->references('id')->on('orders');
-            $t->foreign('product_id')->references('code')->on('products');
+            $t->foreign('user_dispatches')->references('id')->on('users');
             $t->timestamps();
             $t->softDeletes();
         });
@@ -30,7 +30,7 @@ class OdersDetail extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('orders_details');
+        Schema::dropIfExists("dispatchs");
     }
 
 }

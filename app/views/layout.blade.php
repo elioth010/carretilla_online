@@ -12,6 +12,7 @@
 {{ HTML::script('web/js/bootstrap.js') }}
 <!-- Custom Theme files -->
 {{ HTML::style('web/css/style.css') }}
+<!--{{ HTML::style('web/css/adminGrid.css')}}-->
 
 <!-- Custom Theme files -->
 <!-- webfonts -->

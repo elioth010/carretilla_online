@@ -1,6 +1,6 @@
 <?php
 
-class RolesController extends \BaseController {
+class InventoryController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.

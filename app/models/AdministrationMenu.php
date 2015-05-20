@@ -17,11 +17,11 @@ class AdministrationMenu extends Eloquent {
     protected $fillable = array('name', 'description', 'image', 'title');
 
     public function roles() {
-        return $this->belongsToMany("Role", "actions_roles_menu", "role_id");
+        return $this->belongsToMany("Role", "actions_roles_menu", "menu_admin_id", "role_id");
     }
 
     public function actions() {
-        return $this->belongsToMany("Action", "administration_menus", "action_id");
+        return $this->belongsToMany("Action", "actions_roles_menu", "menu_admin_id","action_id");
     }
 
 }

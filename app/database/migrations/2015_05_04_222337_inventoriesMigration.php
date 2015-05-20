@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ReserveInventory extends Migration {
+class InventoriesMigration extends Migration {
 
     /**
      * Run the migrations.
@@ -10,13 +11,11 @@ class ReserveInventory extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('reserve_inventories', function($t) {
+        Schema::create('inventories', function($t) {
             $t->increments('id');
             $t->string('product_id', 10);
-            $t->integer('order_id', false)->unsigned();
             $t->integer('stocks', false)->unsigned();
             $t->foreign('product_id')->references('code')->on('products');
-            $t->foreign('order_id')->references('id')->on('orders');
             $t->timestamps();
             $t->softDeletes();
         });
@@ -28,7 +27,7 @@ class ReserveInventory extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists("reserve_inventories");
+        Schema::dropIfExists("inventories");
     }
 
 }

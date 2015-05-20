@@ -1,25 +1,29 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Oders extends Migration {
+class CategoryMigration extends Migration {
 
-    /**
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	/**
      * Run the migrations.
      *
      * @return void
      */
     public function up() {
         //
-        Schema::create('orders', function($t) {
+       /* Schema::create('category', function($t) {
             $t->increments('id');
-            $t->integer('user_id', false)->unsigned();
-            $t->dateTime('date');
-            $t->decimal('total', 10, 2);
-            $t->foreign('user_id')->references('id')->on('users');
+            $t->string('name', 600);
+            $t->unique('id');
             $t->timestamps();
             $t->softDeletes();
-        });
+        });*/
     }
 
     /**
@@ -29,7 +33,7 @@ class Oders extends Migration {
      */
     public function down() {
         //
-        Schema::dropIfExists("orders");
+       // Schema::dropIfExists("category");
     }
 
 }

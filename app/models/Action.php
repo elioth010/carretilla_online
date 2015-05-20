@@ -21,7 +21,7 @@ class Action extends Eloquent {
     }
     
     public function menus(){
-        return $this->belongsToMany("AdministrationMenu", "administration_menus", "menu_admin_id");
+        return $this->belongsToMany("AdministrationMenu", "actions_roles_menu", "menu_admin_id");
     }
     
 }

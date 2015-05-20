@@ -26,14 +26,14 @@ class MenuController extends Controller {
                 $userRole = $user->roles()->getResults();
                 $menuRole = $menu->roles()->getResults();
                 for ($i = 0; $i < count($menuRole); $i++) {
-                    $found=false;
+                    $found = false;
                     for ($j = 0; $j < count($userRole); $j++) {
                         if ($menuRole[$i]->id === $userRole[$j]->id) {
                             $found = true;
                             break;
                         }
                     }
-                    if($found){
+                    if ($found) {
                         $userMenu[] = $menu;
                         break;
                     }
@@ -53,7 +53,7 @@ class MenuController extends Controller {
     }
 
     public function index() {
-        $menus = Menu::orderBy('order')->get();;
+        $menus = Menu::orderBy('order')->get();
         return View::make("admin.menu.list", array("menus" => $menus));
     }
 
@@ -86,7 +86,7 @@ class MenuController extends Controller {
         } else {
             // store
             $filename = "";
-             if (Input::hasFile('menu_image')) {
+            if (Input::hasFile('menu_image')) {
                 if (Input::file('menu_image')->isValid()) {
                     Input::file('menu_image')->move(MenuController::imagePath());
                     $filename = Input::file('menu_image')->getClientOriginalName();

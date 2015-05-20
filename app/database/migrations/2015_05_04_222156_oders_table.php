@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Inventories extends Migration {
+class OdersMigration extends Migration {
 
     /**
      * Run the migrations.
@@ -11,11 +10,13 @@ class Inventories extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('inventories', function($t) {
+        //
+        Schema::create('orders', function($t) {
             $t->increments('id');
-            $t->string('product_id', 10);
-            $t->integer('stocks', false)->unsigned();
-            $t->foreign('product_id')->references('code')->on('products');
+            $t->integer('user_id', false)->unsigned();
+            $t->dateTime('date');
+            $t->decimal('total', 10, 2);
+            $t->foreign('user_id')->references('id')->on('users');
             $t->timestamps();
             $t->softDeletes();
         });
@@ -27,7 +28,8 @@ class Inventories extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists("inventories");
+        //
+        Schema::dropIfExists("orders");
     }
 
 }

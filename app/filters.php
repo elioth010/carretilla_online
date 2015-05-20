@@ -34,10 +34,10 @@ App::after(function($request, $response) {
 Route::filter('auth', function() {
     
     if (Auth::viaRemember()){
-        //
+        return Redirect::guest('login');
     }else {
         if (Auth::guest()) {
-           return Redirect::route('login')->with('flash_error', 'You must be logged in to view this page!');
+           return Redirect::guest('login')->with('flash_error', 'You must be logged in to view this page!');
         }   
     }
 });
