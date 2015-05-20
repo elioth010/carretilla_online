@@ -29,7 +29,7 @@
                 </thead>
 
                 <tbody>
-                    @foreach($cart as $row)}}
+                    @foreach($cart as $row)
                     <tr>
                         <td>
                             <p><strong>{{$row->name}}></strong></p>
