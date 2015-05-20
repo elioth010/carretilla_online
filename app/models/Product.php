@@ -8,6 +8,8 @@ class Product extends Eloquent {
      * @var string
      */
     protected $table = 'products';
+    
+     protected $primaryKey = 'code';
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -17,7 +19,7 @@ class Product extends Eloquent {
     protected $fillable = array('code', 'mark', 'name', 'price');
 
     public function mark() {
-        return $this->hasOne('Mark', 'mark');
+        return $this->hasOne('Mark', 'code', 'mark');
     }
     
     public function categories(){

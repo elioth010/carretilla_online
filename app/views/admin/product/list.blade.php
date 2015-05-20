@@ -14,35 +14,47 @@
         </ul>
         @endif
 
-        <a href="{{action("MenuController@create")}}" class="btn btn-success">Add</a>
+        <a href="{{action("ProductController@create")}}" class="btn btn-success">Add</a>
         <br/>
         <br/>
         <div class="grid_1" style="background: #ffffff; padding: 2px;">    
-            <table id="datatable-menu" class="table table-striped table-bordered">
+            <table id="datatable-product" class="table table-striped table-bordered">
                 <thead>
                     <tr>
+                        <th>Code</th>
+                        <th>Mark</th>
                         <th>Name</th>
-                        <th>Description</th>
+                        <th>Price</th>
                         <th>Image</th>
-                        <th>Title</th>
-                        <th>Route</th>
-                        <th>Order</th>
+                        <th>Categories</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($menus as $menu)
+                    @foreach($products as $product)
                     <tr>
-                        <td>{{$menu->name}}</td>
-                        <td>{{$menu->description}}</td>
-                        <td>{{str_replace(MenuController::imagePath(), "" ,$menu->image)}}</td>
-                        <td>{{$menu->title}}</td>
-                        <td>{{$menu->route}}</td>
-                        <td>{{$menu->order}}</td>
+                        <td>{{$product->code}}</td>
+                        <td>{{$product->mark()->getResults()->name}}</td>
+                        <td>{{$product->name}}</td>
+                        <td>{{$product->price}}</td>
+                        <td>{{str_replace(ProductController::imagePath(), "" ,$product->image)}}</td>
+                        <td>
+                            <?php
+                            $count = 0;
+                            foreach ($product->categories()->getResults() as $category) {
+                                if($count < (count($product->categories()->get())-1)){
+                                    echo $category->name.', ';
+                                }else{
+                                    echo $category->name;
+                                }
+                                $count++;
+                            }
+                            ?>
+                        </td>
                         <td> 
-                            <a href="{{URL::to('admin/menu/'.$menu->id)}}" class="btn btn-info">View</a>
-                            <a href="{{URL::to('admin/menu/'.$menu->id.'/edit')}}" class="btn btn-default">Edit</a>
-                            <a href="{{URL::to('admin/menu/'.$menu->id.'/delete')}}" class="btn btn-danger">Delete</a>
+                            <a href="{{URL::to('admin/product/'.$product->code)}}" class="btn btn-info">View</a>
+                            <a href="{{URL::to('admin/product/'.$product->code.'/edit')}}" class="btn btn-default">Edit</a>
+                            <a href="{{URL::to('admin/product/'.$product->code.'/delete')}}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                     @endforeach

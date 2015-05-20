@@ -26,7 +26,7 @@
 
         <div class="form-group">
             {{ Form::label('code', 'Code:') }}
-            {{ Form::text('code', $mark->description, array('class' => 'form-control')) }}
+            {{ Form::text('code', $mark->description, array('class' => 'form-control','maxlength' => 3)) }}
         </div>
 
         <div class="form-group">
@@ -35,18 +35,13 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('description', 'Description:') }}
-            {{ Form::text('description', $mark->description, array('class' => 'form-control')) }}
-        </div>
-
-        <div class="form-group">
             {{ Form::label('range_initial', 'Intial Product:') }}
-            {{ Form::text('range_initial', $mark->description, array('class' => 'form-control')) }}
+            {{ Form::text('range_initial', $mark->description, array('class' => 'form-control', 'maxlength' => 8)) }}
         </div>
 
         <div class="form-group">
             {{ Form::label('range_final', 'Final Product:') }}
-            {{ Form::text('range_final', $mark->title, array('class' => 'form-control')) }}
+            {{ Form::text('range_final', $mark->title, array('class' => 'form-control', 'maxlength' => 8 )) }}
         </div>
 
         <a href="{{URL::to('admin/mark')}}" class="btn btn-danger">Return</a>

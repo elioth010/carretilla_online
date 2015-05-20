@@ -15,54 +15,48 @@
     </ul>
     @endif
     <div id="create-container" class="container">
-        <h1>Create a menu entry</h1>
+        <h1>Create a product entry</h1>
 
         <!-- if there are creation errors, they will show here -->
         {{ HTML::ul($errors->all()) }}
 
-        {{ Form::open(array('url' => 'admin/menu', 'method'=>'post', 'files' => true)) }}
+        {{ Form::open(array('url' => 'admin/product', 'method'=>'post', 'files' => true)) }}
         {{ Form::token() }}
+        <div class="form-group">
+            {{ Form::label('code', 'Code:') }}
+            {{ Form::text('code', Input::old('code'), array('class' => 'form-control', 'maxlength' => 8)) }}
+        </div>
+
+        <div class="form-group">
+            {{ Form::label('mark', 'Mark:') }}
+            {{ Form::select('mark', ['' => ''] + Mark::all()->lists('name', 'code')) }}
+        </div>
+        
         <div class="form-group">
             {{ Form::label('name', 'Name:') }}
             {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
         </div>
 
         <div class="form-group">
-            {{ Form::label('description', 'Description:') }}
-            {{ Form::text('description', Input::old('description'), array('class' => 'form-control')) }}
+            {{ Form::label('price', 'Price:') }}
+            {{ Form::text('price', Input::old('description'), array('class' => 'form-control')) }}
         </div>
 
         <div class="form-group">
             {{ Form::label('image', 'Image:') }}
-            {{ Form::file('menu_image') }}
+            {{ Form::file('product_image') }}
         </div>
 
         <div class="form-group">
-            {{ Form::label('title', 'Title:') }}
-            {{ Form::text('title', Input::old('title'), array('class' => 'form-control')) }}
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('role', 'Role:') }}
+            {{ Form::label('category', 'Category:') }}
             <br>
-            @foreach(Role::all() as $rol)
-            {{Form::checkbox('roles[]', $rol->id, null , array("style", "padding-left:1.5em"))}}<label style="padding-right:0.5em" >{{$rol->name.''}}</label>
+            @foreach(Category::all() as $category)
+            {{Form::checkbox('categories[]', $category->id, null , array("style", "padding-left:1.5em"))}}<label style="padding-right:0.5em" >{{$category->name.''}}</label>
             @endforeach
-            <!--           Form::select('role', ['' => ''] +Role::lists('name', 'id'), array('multiple'=>'multiple', 'class'=> 'dropdown'))-->
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('route', 'Route:') }}
-            {{ Form::text('route', Input::old('route'), array('class' => 'form-control')) }}
-        </div>
-        
-        <div class="form-group">
-            {{ Form::label('order', 'Order:') }}
-            {{ Form::text('order', Input::old('order'), array('class' => 'form-control')) }}
         </div>
 
         {{ Form::submit('Create', array('class' => 'btn btn-success')) }}
-        <a href="{{URL::to('admin/menu')}}" class="btn btn-danger">Cancel</a>
+        <a href="{{URL::to('admin/product')}}" class="btn btn-danger">Cancel</a>
 
         {{ Form::close() }}
     </div>

@@ -24,7 +24,7 @@
         {{ Form::token() }}
         <div class="form-group">
             {{ Form::label('code', 'Code:') }}
-            {{ Form::text('code', Input::old('code'), array('class' => 'form-control')) }}
+            {{ Form::text('code', Input::old('code'), array('class' => 'form-control','maxlength' => 3)) }}
         </div>
 
         <div class="form-group">
@@ -34,12 +34,12 @@
 
         <div class="form-group">
             {{ Form::label('range_initial', 'Initial Product:') }}
-            {{ Form::text('range_initial', Input::old('range_initial'), array('class' => 'form-control')) }}
+            {{ Form::text('range_initial', Input::old('range_initial'), array('class' => 'form-control','maxlength' => 8)) }}
         </div>
 
         <div class="form-group">
             {{ Form::label('range_final', 'Final Product:') }}
-            {{ Form::text('range_final', Input::old('range_final'), array('class' => 'form-control')) }}
+            {{ Form::text('range_final', Input::old('range_final'), array('class' => 'form-control', 'maxlength' => 8 )) }}
         </div>
 
         {{ Form::submit('Create', array('class' => 'btn btn-success')) }}

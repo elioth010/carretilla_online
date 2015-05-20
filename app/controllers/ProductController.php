@@ -13,18 +13,19 @@ class ProductController extends \BaseController {
     }
 
     public function show($id) {
-        $product = Product::find($id);
+        $product = Product::where('code', '=', $id)->firstOrFail();
         return View::make('admin.product.show')->with('product', $product);
     }
 
     public function edit($id) {
-        $product = Product::find($id);
+        $product = Product::where('code', '=', $id)->firstOrFail();
+        //$product = new Product();
         return View::make('admin.product.edit')->with('product', $product);
     }
 
     public function store() {
         $rules = array(
-            'code' => 'required|unique:code',
+            'code' => 'required',
             'name' => 'required',
             'mark' => 'required',
             'price' => array('required', 'regex:/^\d*(\.\d{2})?$/'),
@@ -36,7 +37,7 @@ class ProductController extends \BaseController {
 
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('product/create')->withErrors($validator)->withInput();
+            return Redirect::to('admin/product/create')->withErrors($validator)->withInput();
         } else {
             // store
             $filename = "";
@@ -49,6 +50,7 @@ class ProductController extends \BaseController {
             $product = new Product();
             $product->code = Input::get('code');
             $product->mark = Input::get('mark');
+            $product->name = Input::get('name');
             if ($filename !== "") {
                 $product->image = ProductController::imagePath() . $filename;
             }
@@ -56,7 +58,9 @@ class ProductController extends \BaseController {
             $product->save();
 
             foreach (Input::get('categories') as $catId) {
-                $product->categories()->attach($catId);
+                DB::table('products_category')->insert(
+                        array('product_id' => Input::get('code'), 'category_id' => $catId)
+                );
             }
             // redirect
             Session::flash('message', 'Successfully created product!');
@@ -66,9 +70,8 @@ class ProductController extends \BaseController {
 
     public function update($id) {
         $rules = array(
-            'code' => 'required|unique:code',
+            'code' => 'required',
             'name' => 'required',
-            'mark' => 'required',
             'price' => array('required', 'regex:/^\d*(\.\d{2})?$/'),
             'categories' => 'required',
             'product_image' => 'mimes:jpeg,bmp,png'
@@ -78,7 +81,7 @@ class ProductController extends \BaseController {
 
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('product/create')->withErrors($validator)->withInput();
+            return Redirect::to('admin/product/' . $id . '/edit')->withErrors($validator)->withInput();
         } else {
             // store
             $filename = "";
@@ -88,28 +91,21 @@ class ProductController extends \BaseController {
                     $filename = Input::file('product_image')->getClientOriginalName();
                 }
             }
-            $product = new Product();
-            $product->code = Input::get('code');
-            $product->mark = Input::get('mark');
+            Product::where('code', '=', $id)->update(['code' => Input::get('code')]);
+            Product::where('code', '=', $id)->update(['name' => Input::get('name')]);
             if ($filename !== "") {
-                $product->image = ProductController::imagePath() . $filename;
+                Product::where('code', '=', $id)->update(['image' => ProductController::imagePath() . $filename]);
             }
-            $product->price = Input::get('price');
-            $product->save();
+            Product::where('code', '=', $id)->update(['price' => Input::get('price')]);
 
+            $product = Product::where('code', '=', $id)->firstOrFail();
             foreach (Category::all() as $cat) {
-                $product->categories()->detach($cat->id);
+                DB::table('products_category')->where('product_id', '=', $product->code)->where('category_id', '=', $cat->id)->delete();
             }
             foreach (Input::get('categories') as $catId) {
-                $found = false;
-                foreach ($product->roles()->getResults() as $roleProduct) {
-                    if ($roleProduct->id === $catId) {
-                        $found = true;
-                    }
-                }
-                if (!$found) {
-                    $product->categories()->attach($catId);
-                }
+                DB::table('products_category')->insert(
+                        array('product_id' => $product->code, 'category_id' => $catId)
+                );
             }
             // redirect
             Session::flash('message', 'Successfully updated product!');
@@ -122,15 +118,15 @@ class ProductController extends \BaseController {
     }
 
     public function destroy($id) {
-        $product = Product::find($id);
+        $product = Product::where('code', '=', $id)->firstOrFail();
         return View::make('admin.product.delete')->with('product', $product);
     }
 
     public function delete($id) {
-        $product = Product::find($id);
+        $product = Product::where('code', '=', $id)->firstOrFail();
 
-        foreach ($product->categories()->getResults() as $cat) {
-            $product->categories()->detach($cat->id);
+        foreach (Category::all() as $cat) {
+            DB::table('products_category')->where('product_id', '=', $product->code)->where('category_id', '=', $cat->id)->delete();
         }
 
         $product->delete();

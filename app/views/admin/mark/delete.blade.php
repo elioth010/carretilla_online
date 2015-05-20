@@ -34,11 +34,6 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('description', 'Description:') }}
-            {{ Form::text('description', $mark->description, array('class' => 'form-control', 'disabled')) }}
-        </div>
-
-        <div class="form-group">
             {{ Form::label('range_initial', 'Intial Product:') }}
             {{ Form::text('range_initial', $mark->description, array('class' => 'form-control', 'disabled')) }}
         </div>
