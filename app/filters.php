@@ -38,6 +38,20 @@ Route::filter('auth', function() {
     }else {
         if (Auth::guest()) {
            return Redirect::guest('login')->with('flash_error', 'You must be logged in to view this page!');
+        }else{
+            $admin = false;
+            foreach(Auth::user()->roles()->getResults() as $role){
+                if($role->name==='user' || $role->name==='guest'){
+                    
+                }else{
+                    $admin=true;
+                }
+            }
+            if($admin){
+            
+            }else{
+                return Redirect::guest('home')->with('flash_error', 'You must be admin in to view this page!');
+            }
         }   
     }
 });

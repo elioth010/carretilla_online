@@ -44,19 +44,24 @@ Route::get('logout', array('as' => 'logout', function () {
         Auth::logout();
         return Redirect::route('home')->with('flash_notice', 'You are successfully logged out.');
     }))->before('auth');
+    
+Route::get('logout', array('as' => 'logout', function () {
+        Auth::logout();
+        return Redirect::route('home')->with('flash_notice', 'You are successfully logged out.');
+    }))->before('auth-shopp');
 
 //Menu Routes
 Route::get('profile', "UserController@showProfile")->before('auth');
 Route::get('product', "ProductController@listProducts");
 //ORDER
-Route::post('order', "OrderController@store")->before('auth')->before('csrf');
-Route::get('orders', "OrderController@getMyOrders")->before('auth');
-Route::get('order/{id}', "OrderController@show")->before('auth');
-Route::get('order/{id}/delete', "OrderController@destroy")->before('auth');
-Route::delete('order/{id}', "OrderController@delete")->before('auth')->before('csrf');
+Route::post('order', "OrderController@store")->before('auth-shopp')->before('csrf');
+Route::get('orders', "OrderController@getMyOrders")->before('auth-shopp');
+Route::get('order/{id}', "OrderController@myOrderShow")->before('auth-shopp');
+Route::get('order/{id}/delete', "OrderController@myOrderDestroy")->before('auth-shopp');
+Route::delete('order/{id}', "OrderController@delete")->before('auth-shopp')->before('csrf');
 
 //Carretilla
-Route::put('order', "OrderController@addToCart")->before('auth');
+Route::put('order', "OrderController@addToCart")->before('auth-shopp');
 Route::delete('order', "OrderController@removeToCart")->before('auth-shopp');
 Route::get('shooppingcart', "OrderController@viewCart")->before('auth-shopp');
 

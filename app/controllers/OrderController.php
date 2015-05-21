@@ -19,23 +19,26 @@ class OrderController extends \BaseController {
      */
     public function store() {
         $carts = Cart::content();
-        
+        if(Cart::count()<1){
+            Session::flash('flash_error', 'You need add at least one product!');
+        }
         $order = new Order();
         $order->user_id = Auth::user()->id;
-        $order->date = date('yyyy-MM-dd hh:mm:ss');
+        $order->date = date('Y-m-d h:i:s');
         $order->total = money_format('%.2n', Cart::total());
         $order->save();
         foreach ($carts as $row) {
             $product = Product::find($row->id)->firstOrFail();
-            
+
             $orderDetail = new OrderDetail();
             $orderDetail->order_id = $order->id;
             $orderDetail->product_id = $product->code;
             $orderDetail->quantity = $row->qty;
-            $orderDetail->sub_total = money_format('%.2n',$row->subtotal);
+            $orderDetail->sub_total = money_format('%.2n', $row->subtotal);
             $orderDetail->save();
+            Cart::destroy();
         }
-        
+
         Session::flash('message', 'Successfully created order!');
         return Redirect::to('orders');
     }
@@ -51,6 +54,11 @@ class OrderController extends \BaseController {
         return View::make('admin.order.show')->with('order', $order);
     }
 
+    public function myOrderShow($id) {
+        $order = Order::find($id);
+        return View::make('ordersdetail')->with('order', $order);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -61,6 +69,11 @@ class OrderController extends \BaseController {
         $order = Order::find($id);
         return View::make('admin.order.delete')->with('order', $order);
     }
+    
+     public function myOrderDestroy($id) {
+        $order = Order::find($id);
+        return View::make('ordersdelete')->with('order', $order);
+    }
 
     public function delete($id) {
         $order = Order::find($id);
@@ -70,7 +83,7 @@ class OrderController extends \BaseController {
         $order->delete();
         // redirect
         Session::flash('message', 'Successfully deleted the product!');
-        return Redirect::to('admin/order');
+        return Redirect::to('orders');
     }
 
     public function viewCart() {
@@ -93,8 +106,8 @@ class OrderController extends \BaseController {
         Session::flash('message', 'Successfully ' . $product->name . ' deattached to the basket');
         return Redirect::to('product');
     }
-    
-    public function getMyOrders(){
+
+    public function getMyOrders() {
         $orders = Order::where('user_id', '=', Auth::user()->id)->get();
         return View::make('orders')->with('orders', $orders);
     }

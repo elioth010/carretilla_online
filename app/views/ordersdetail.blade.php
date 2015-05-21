@@ -16,12 +16,11 @@
     @endif
 
     <div id="create-container" class="container">
-        <h1>Show {{$menu->name}}</h1>
 
         <!-- if there are creation errors, they will show here -->
         {{ HTML::ul($errors->all()) }}
 
-        {{ Form::open(array('url' => 'admin/menu', 'method'=>'post', 'files' => true)) }}
+        {{ Form::open(array('url' => 'order', 'method'=>'post', 'files' => true)) }}
         {{ Form::token() }}
         <table id="datatable-order" class="table table-striped table-bordered">
             <thead>

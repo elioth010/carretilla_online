@@ -20,7 +20,7 @@
         <!-- if there are creation errors, they will show here -->
         {{ HTML::ul($errors->all()) }}
 
-        {{ Form::open(array('url' => 'admin/order/'.$order->id)) }}
+        {{ Form::open(array('url' => 'order/'.$order->id)) }}
         {{ Form::token() }}
         <table id="datatable-order" class="table table-striped table-bordered">
             <thead>
@@ -62,7 +62,7 @@
             </tbody>
         </table>
         
-        <a href="{{ URL::to('order/'.$order->id) }}" class="btn btn-success">Return</a>
+        <a href="{{ URL::to('admin/order') }}" class="btn btn-success">Return</a>
         {{ Form::hidden('_method', 'DELETE') }}
         {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
         {{Form::close()}}
