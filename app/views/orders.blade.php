@@ -32,8 +32,8 @@
                         <td>{{$order->user->name}}</td>
                         <td>{{$order->date}}</td>
                         <td> 
-                            <a href="{{URL::to('admin/order/'.$order->id)}}" class="btn btn-info">View</a>
-                            <a href="{{URL::to('admin/order/'.$order->id.'/delete')}}" class="btn btn-danger">Delete</a>
+                            <a href="{{URL::to('order/'.$order->id)}}" class="btn btn-info">View</a>
+                            <a href="{{URL::to('order/'.$order->id.'/delete')}}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                     @endforeach

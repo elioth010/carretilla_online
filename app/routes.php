@@ -31,7 +31,7 @@ Route::post('login', function () {
 
     if (Auth::attempt($user, (Input::has('remember_me')) ? true : false)) {
         Session::put('user', $user['username']);
-        return Redirect::intended('home')->with('flash_notice', 'You are successfully logged in.');
+        return Redirect::route('home')->with('flash_notice', 'You are successfully logged in.');
     }
     
     // authentication failure! lets go back to the login page
@@ -48,9 +48,17 @@ Route::get('logout', array('as' => 'logout', function () {
 //Menu Routes
 Route::get('profile', "UserController@showProfile")->before('auth');
 Route::get('product', "ProductController@listProducts");
+//ORDER
+Route::post('order', "OrderController@store")->before('auth')->before('csrf');
+Route::get('orders', "OrderController@getMyOrders")->before('auth');
+Route::get('order/{id}', "OrderController@show")->before('auth');
+Route::delete('order/{id}', "OrderController@delete")->before('auth')->before('csrf');
+
+//Carretilla
 Route::put('order', "OrderController@addToCart")->before('auth');
-Route::get('orders', "OrderController@getMyOrders");
-Route::get('shooppingcart', "OrderController@viewCart")->before('auth');
+Route::delete('order', "OrderController@removeToCart")->before('auth-shopp');
+Route::get('shooppingcart', "OrderController@viewCart")->before('auth-shopp');
+
 
 //Admin Routes
 Route::get('admin', "AdminController@index")->before('auth');
@@ -141,3 +149,13 @@ Route::get('admin/product/{id}/edit', "ProductController@edit")->before('auth');
 Route::get('admin/product/{id}/delete', "ProductController@destroy")->before('auth');
 Route::post('admin/product/{id}', "ProductController@update")->before('auth')->before('csrf');
 Route::delete('admin/product/{id}', "ProductController@delete")->before('auth')->before('csrf');
+
+Route::get('admin/order', "OrderController@index")->before('auth');
+Route::get('admin/order/{id}', "OrderController@show")->before('auth');
+Route::get('admin/order/{id}/delete', "OrderController@destroy")->before('auth');
+Route::delete('admin/order/{id}', "OrderController@delete")->before('auth')->before('csrf');
+
+Route::get('admin/order', "OrderController@index")->before('auth');
+Route::get('admin/order/{id}', "OrderController@show")->before('auth');
+Route::get('admin/order/{id}/delete', "OrderController@destroy")->before('auth');
+Route::delete('admin/order/{id}', "OrderController@delete")->before('auth')->before('csrf');

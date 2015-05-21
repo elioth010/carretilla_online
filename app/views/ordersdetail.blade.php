@@ -16,11 +16,12 @@
     @endif
 
     <div id="create-container" class="container">
+        <h1>Show {{$menu->name}}</h1>
 
         <!-- if there are creation errors, they will show here -->
         {{ HTML::ul($errors->all()) }}
 
-        {{ Form::open(array('url' => 'admin/order', 'method'=>'post', 'files' => true)) }}
+        {{ Form::open(array('url' => 'admin/menu', 'method'=>'post', 'files' => true)) }}
         {{ Form::token() }}
         <table id="datatable-order" class="table table-striped table-bordered">
             <thead>
@@ -61,7 +62,8 @@
                 </tr>
             </tbody>
         </table>
-        <a href="{{ URL::to('admin/order') }}" class="btn btn-danger">Return</a>
+
+        <a href="{{ URL::to('orders') }}" class="btn btn-danger">Return</a>
     </div>
 </div>
 @stop

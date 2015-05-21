@@ -24,7 +24,7 @@
                         <th>Quantity</th>
                         <th>Item Price</th>
                         <th>Subtotal</th>
-                        <td>Actions</td>
+                        <th>Actions</th>
                     </tr>
                 </thead>
 
@@ -32,23 +32,34 @@
                     @foreach($cart as $row)
                     <tr>
                         <td>
-                            <p><strong>{{$row->name}}></strong></p>
-                            <p><?php echo ($row->options->has('size') ? $row->options->size : ''); ?></p>
+                            <strong>{{$row->name}}</strong>
                         </td>
-                        <td>{{$row->qty;}}</td>
-                        <td>{{$row->price}}</td>
-                        <td>{{$row->subtotal}}></td>
+                        <td>{{$row->qty}}</td>
+                        <td>Q{{money_format('%.2n', $row->price)}}</td>
+                        <td>Q{{money_format('%.2n',$row->subtotal)}}</td>
                         <td>
-                            {{ Form::open(array('url' => 'order', 'method'=>'put', 'files' => true)) }}
+                            {{ Form::open(array('url' => 'order')) }}
                             <input type="hidden" value="{{$row->id}}" name="product" id="product" />
+                            {{ Form::hidden('_method', 'DELETE') }}
                             {{ Form::submit('Remove', array('class' => 'btn btn-danger')) }}
                             {{ Form::close() }}
                         </td>
                     </tr>
                     @endforeach
+                    <tr>
+                        <td colspan="5" style="text-align: right; padding-right: 65px;">You Total: Q{{money_format('%.2n',Cart::total())}}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
+
+        <br/>
+        <br/>
+        
+        {{ Form::open(array('url' => 'order', 'method'=>'post', 'files' => true)) }}
+        {{ Form::token() }}
+        {{ Form::submit('Confirm Order', array('class' => 'btn btn-success')) }}
+        {{ Form::close() }}
     </div>
 </section>
 @stop

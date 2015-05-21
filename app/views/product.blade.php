@@ -51,7 +51,7 @@
                             ?>
                         </td>
                         <td>
-                            {{ Form::open(array('url' => 'order', 'method'=>'put', 'files' => true)) }}
+                            {{ Form::open(array('url' => 'order', 'method'=>'put')) }}
                                 <input type="hidden" value="{{$product->code}}" name="product" id="product" />
                             {{ Form::submit('Add', array('class' => 'btn btn-warnign')) }}
                             {{ Form::close() }}

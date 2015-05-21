@@ -42,6 +42,19 @@ Route::filter('auth', function() {
     }
 });
 
+Route::filter('auth-shopp', function() {
+    
+    if (Auth::viaRemember()){
+        return Redirect::route('product');
+    }else {
+        if (Auth::guest()) {
+           return Redirect::guest('login')->with('flash_error', 'You must be logged in to view this page!');
+        }   
+    }
+});
+
+
+
 
 Route::filter('auth.basic', function() {
     return Auth::basic();

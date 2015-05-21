@@ -17,7 +17,15 @@ class Order extends Eloquent {
     protected $fillable = array('user_id', 'date', 'total');
     
     public function user(){
-        return $this->hasOne('User', 'user_id');
+        return $this->hasOne('User', 'id', 'user_id');
+    }
+    
+    public function dispatch(){
+        return $this->belongsTo('Dispatch');
+    }
+    
+    public function detail(){
+        return $this->hasMany('OrderDetail');
     }
 
 }

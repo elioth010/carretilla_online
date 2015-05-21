@@ -8,16 +8,8 @@ class OrderController extends \BaseController {
      * @return Response
      */
     public function index() {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create() {
-        //
+        $orders = Order::orderBy('user_id')->get();
+        return View::make("admin.order.list", array("orders" => $orders));
     }
 
     /**
@@ -26,7 +18,26 @@ class OrderController extends \BaseController {
      * @return Response
      */
     public function store() {
-        //
+        $carts = Cart::content();
+        
+        $order = new Order();
+        $order->user_id = Auth::user()->id;
+        $order->date = date('yyyy-MM-dd hh:mm:ss');
+        $order->total = money_format('%.2n', Cart::total());
+        $order->save();
+        foreach ($carts as $row) {
+            $product = Product::find($row->id)->firstOrFail();
+            
+            $orderDetail = new OrderDetail();
+            $orderDetail->order_id = $order->id;
+            $orderDetail->product_id = $product->code;
+            $orderDetail->quantity = $row->qty;
+            $orderDetail->sub_total = money_format('%.2n',$row->subtotal);
+            $orderDetail->save();
+        }
+        
+        Session::flash('message', 'Successfully created order!');
+        return Redirect::to('orders');
     }
 
     /**
@@ -36,27 +47,8 @@ class OrderController extends \BaseController {
      * @return Response
      */
     public function show($id) {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id) {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id) {
-        //
+        $order = Order::find($id);
+        return View::make('admin.order.show')->with('order', $order);
     }
 
     /**
@@ -66,19 +58,45 @@ class OrderController extends \BaseController {
      * @return Response
      */
     public function destroy($id) {
-        //
+        $order = Order::find($id);
+        return View::make('admin.order.delete')->with('order', $order);
     }
-    
-    public function viewCart(){
+
+    public function delete($id) {
+        $order = Order::find($id);
+        foreach ($order->detail()->getResults() as $detail) {
+            $detail->delete();
+        }
+        $order->delete();
+        // redirect
+        Session::flash('message', 'Successfully deleted the product!');
+        return Redirect::to('admin/order');
+    }
+
+    public function viewCart() {
         $cart = Cart::content();
         return View::make("cart", array("cart" => $cart));
     }
-    
-    public function addToCart(){
+
+    public function addToCart() {
         $product = Product::where('code', '=', Input::get('product'))->firstOrFail();
-        Cart::add($product->code,$product->name, 1, $product->price);
-        Session::flash('message', 'Successfully '.$product->name.' attached to the basket');
+        Cart::add($product->code, $product->name, 1, $product->price);
+        Session::flash('message', 'Successfully ' . $product->name . ' attached to the basket');
         return Redirect::to('product');
+    }
+
+    public function removeToCart() {
+        $product = Product::where('code', '=', Input::get('product'))->firstOrFail();
+
+        $rowId = Cart::search(array('id' => $product->code));
+        Cart::remove($rowId[0]);
+        Session::flash('message', 'Successfully ' . $product->name . ' deattached to the basket');
+        return Redirect::to('product');
+    }
+    
+    public function getMyOrders(){
+        $orders = Order::where('user_id', '=', Auth::user()->id)->get();
+        return View::make('orders')->with('orders', $orders);
     }
 
 }
