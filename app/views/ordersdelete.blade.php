@@ -62,7 +62,7 @@
             </tbody>
         </table>
         
-        <a href="{{ URL::to('admin/order') }}" class="btn btn-success">Return</a>
+        <a href="{{ URL::to('order/'.$order->id) }}" class="btn btn-success">Return</a>
         {{ Form::hidden('_method', 'DELETE') }}
         {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
         {{Form::close()}}

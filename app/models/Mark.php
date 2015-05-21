@@ -8,6 +8,7 @@ class Mark extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'marks';
+        protected $primaryKey = 'code';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

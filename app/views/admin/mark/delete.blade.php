@@ -21,11 +21,11 @@
         <!-- if there are creation errors, they will show here -->
         {{ HTML::ul($errors->all()) }}
 
-        {{ Form::open(array('url' => 'admin/mark/'.$mark->id)) }}
+        {{ Form::open(array('url' => 'admin/mark/'.$mark->code)) }}
         {{ Form::token() }}
         <div class="form-group">
             {{ Form::label('code', 'Code:') }}
-            {{ Form::text('code', $mark->description, array('class' => 'form-control', 'disabled', 'disabled')) }}
+            {{ Form::text('code', $mark->code, array('class' => 'form-control', 'disabled')) }}
         </div>
 
         <div class="form-group">
@@ -35,12 +35,12 @@
 
         <div class="form-group">
             {{ Form::label('range_initial', 'Intial Product:') }}
-            {{ Form::text('range_initial', $mark->description, array('class' => 'form-control', 'disabled')) }}
+            {{ Form::text('range_initial', $mark->product_range_initial, array('class' => 'form-control', 'disabled')) }}
         </div>
 
         <div class="form-group">
             {{ Form::label('range_final', 'Final Product:') }}
-            {{ Form::text('range_final', $mark->title, array('class' => 'form-control', 'disabled')) }}
+            {{ Form::text('range_final', $mark->product_range_final, array('class' => 'form-control', 'disabled')) }}
         </div>
         
         <a href="{{ URL::to('admin/mark') }}" class="btn btn-success">Return</a>

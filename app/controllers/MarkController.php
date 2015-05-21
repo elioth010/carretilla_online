@@ -52,21 +52,19 @@ class MarkController extends \BaseController {
 
     public function update($id) {
         $rules = array(
-            'code' => 'required|min:3|max:3|numeric|unique:code',
             'name' => 'required',
-            'range_initial' => 'required|min:8|unique',
-            'range_final' => 'required|min:8|unique',
+            'range_initial' => 'required|min:8',
+            'range_final' => 'required|min:8',
         );
 
         $validator = Validator::make(Input::all(), $rules);
 
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('admin/mark/create')->withErrors($validator)->withInput();
+            return Redirect::to('admin/mark/'.$id.'/update')->withErrors($validator)->withInput();
         } else {
             // store
             $mark = Mark::find($id);
-            $mark->code = Input::get('code');
             $mark->name = Input::get('name');
             $mark->product_range_initial = Input::get('range_initial');
             $mark->product_range_final = Input::get('range_final');

@@ -36,9 +36,9 @@
                         <td>{{$mark->product_range_initial}}</td>
                         <td>{{$mark->product_range_final}}</td>
                         <td> 
-                            <a href="{{URL::to('admin/mark/'.$mark->id)}}" class="btn btn-info">View</a>
-                            <a href="{{URL::to('admin/mark/'.$mark->id.'/edit')}}" class="btn btn-default">Edit</a>
-                            <a href="{{URL::to('admin/mark/'.$mark->id.'/delete')}}" class="btn btn-danger">Delete</a>
+                            <a href="{{URL::to('admin/mark/'.$mark->code)}}" class="btn btn-info">View</a>
+                            <a href="{{URL::to('admin/mark/'.$mark->code.'/edit')}}" class="btn btn-default">Edit</a>
+                            <a href="{{URL::to('admin/mark/'.$mark->code.'/delete')}}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                     @endforeach

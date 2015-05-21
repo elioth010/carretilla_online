@@ -21,12 +21,12 @@
         <!-- if there are creation errors, they will show here -->
         {{ HTML::ul($errors->all()) }}
 
-        {{ Form::model($mark, array('url'=>'admin/mark/'.$mark->id,'method' => 'post', 'files' => true)) }}
+        {{ Form::model($mark, array('url'=>'admin/mark/'.$mark->code,'method' => 'post', 'files' => true)) }}
         {{ Form::token() }}
 
         <div class="form-group">
             {{ Form::label('code', 'Code:') }}
-            {{ Form::text('code', $mark->description, array('class' => 'form-control','maxlength' => 3)) }}
+            {{ Form::text('code', $mark->code, array('class' => 'form-control','maxlength' => 3, 'disabled')) }}
         </div>
 
         <div class="form-group">
@@ -36,12 +36,12 @@
 
         <div class="form-group">
             {{ Form::label('range_initial', 'Intial Product:') }}
-            {{ Form::text('range_initial', $mark->description, array('class' => 'form-control', 'maxlength' => 8)) }}
+            {{ Form::text('range_initial', $mark->product_range_initial, array('class' => 'form-control', 'maxlength' => 8)) }}
         </div>
 
         <div class="form-group">
             {{ Form::label('range_final', 'Final Product:') }}
-            {{ Form::text('range_final', $mark->title, array('class' => 'form-control', 'maxlength' => 8 )) }}
+            {{ Form::text('range_final', $mark->product_range_final, array('class' => 'form-control', 'maxlength' => 8 )) }}
         </div>
 
         <a href="{{URL::to('admin/mark')}}" class="btn btn-danger">Return</a>

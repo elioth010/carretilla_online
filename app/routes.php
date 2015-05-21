@@ -52,6 +52,7 @@ Route::get('product', "ProductController@listProducts");
 Route::post('order', "OrderController@store")->before('auth')->before('csrf');
 Route::get('orders', "OrderController@getMyOrders")->before('auth');
 Route::get('order/{id}', "OrderController@show")->before('auth');
+Route::get('order/{id}/delete', "OrderController@destroy")->before('auth');
 Route::delete('order/{id}', "OrderController@delete")->before('auth')->before('csrf');
 
 //Carretilla
