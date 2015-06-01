@@ -12,9 +12,9 @@
         <li class="icon4_desc"><p><?php echo Session::get('message'); ?></p></li>
     </ul>
     <?php endif; ?>
-    
+
     <div id="create-container" class="container" style="padding-top: 5em;">
-        <h1>Show <?php echo $user->name; ?></h1>
+        <h1>Edit <?php echo $user->name; ?></h1>
         <!-- if there are creation errors, they will show here -->
         <?php echo HTML::ul($errors->all()); ?>
 
@@ -22,13 +22,6 @@
         <?php echo Form::model($user, array('url'=>'admin/user/'.$user->id,'method' => 'post')); ?>
 
         <?php echo Form::token(); ?>
-
- <div class="form-group">
-            <?php echo Form::label('name', 'Name:'); ?>
-
-            <?php echo Form::text('name', $user->name, array('class' => 'form-control')); ?>
-
-        </div>
 
         <div class="form-group">
             <?php echo Form::label('username', 'Username:'); ?>
@@ -38,9 +31,23 @@
         </div>
 
         <div class="form-group">
+            <?php echo Form::label('password', 'Password:'); ?>
+
+            <?php echo Form::password('password',array('class' => 'form-control')); ?>
+
+        </div>
+
+        <div class="form-group">
             <?php echo Form::label('email', 'Email:'); ?>
 
             <?php echo Form::text('email', $user->email, array('class' => 'form-control')); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('name', 'Name:'); ?>
+
+            <?php echo Form::text('name', $user->name, array('class' => 'form-control')); ?>
 
         </div>
 

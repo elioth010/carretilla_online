@@ -1,0 +1,70 @@
+<?php $__env->startSection('content'); ?>
+<section>
+    <div id=principal class="container" >
+        <?php if(Session::has('flash_error')): ?>
+        <div class="tooltip_box1" id="flash_error"><?php echo Session::get('flash_error'); ?></div>
+        <?php endif; ?>
+
+        <?php if(Session::has('message')): ?>
+        <ul class="tick tick1">
+            <i class="icon4"> </i>
+            <li class="icon4_desc"><p><?php echo Session::get('message'); ?></p></li>
+        </ul>
+        <?php endif; ?>
+
+        <br/>
+        <br/>
+        <div class="grid_1" style="background: #ffffff; padding: 2px;">    
+            <table id="datatable-product" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Mark</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Categories</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($products as $product): ?>
+                    <tr>
+                        <td><?php echo $product->code; ?></td>
+                        <td><?php echo $product->mark()->getResults()->name; ?></td>
+                        <td><?php echo $product->name; ?></td>
+                        <td><?php echo $product->price; ?></td>
+                        <td><img src="<?php echo $product->image; ?>"/></td>
+                        <td>
+                            <?php
+                            $count = 0;
+                            foreach ($product->categories()->getResults() as $category) {
+                                if($count < (count($product->categories()->get())-1)){
+                                    echo $category->name.', ';
+                                }else{
+                                    echo $category->name;
+                                }
+                                $count++;
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php echo Form::open(array('url' => 'order', 'method'=>'put')); ?>
+
+                                <input type="hidden" value="<?php echo $product->code; ?>" name="product" id="product" />
+                            <?php echo Form::submit('Add', array('class' => 'btn btn-warnign')); ?>
+
+                            <?php echo Form::close(); ?>
+
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<?php $__env->stopSection(); ?>
+<!--action('UserController@updateUser', $usuario->id)-->
+<!--action('UserController@deleteUser', $usuario->id)-->
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

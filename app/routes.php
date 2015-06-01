@@ -52,6 +52,7 @@ Route::get('logout', array('as' => 'logout', function () {
 
 //Menu Routes
 Route::get('profile', "UserController@showProfile")->before('auth');
+Route::get('profile', "UserController@showProfile")->before('auth-shopp');
 Route::get('product', "ProductController@listProducts");
 //ORDER
 Route::post('order', "OrderController@store")->before('auth-shopp')->before('csrf');

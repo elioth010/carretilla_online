@@ -1,0 +1,76 @@
+<?php $__env->startSection('content'); ?>
+
+<div class="single_center">
+    <!-- check for login error flash var -->
+    <?php if(Session::has('flash_error')): ?>
+    <div id="flash_error"><?php echo Session::get('flash_error'); ?></div>
+    <?php endif; ?>
+
+    <?php if(Session::has('message')): ?>
+    <ul class="tick tick1">
+        <i class="icon4"> </i>
+        <li class="icon4_desc"><p><?php echo Session::get('message'); ?></p></li>
+    </ul>
+    <?php endif; ?>
+
+    <div id="create-container" class="container">
+
+        <!-- if there are creation errors, they will show here -->
+        <?php echo HTML::ul($errors->all()); ?>
+
+
+        <?php echo Form::open(array('url' => 'admin/order/'.$order->id)); ?>
+
+        <?php echo Form::token(); ?>
+
+        <table id="datatable-order" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><?php echo $order->id; ?></td>
+                    <td><?php echo $order->user->name; ?></td>
+                    <td><?php echo $order->date; ?></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table id="datatable-order" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Product Code</th>
+                    <th>Quantity</th>
+                    <th>SubTotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($order->detail()->getResults() as $detail): ?>
+                <tr>
+                    <td><?php echo $detail->product_id; ?>-<?php echo $detail->product->name; ?></td>
+                    <td><?php echo $detail->quantity; ?></td>
+                    <td>Q<?php echo money_format('%.2n',$detail->sub_total); ?></td>
+                </tr>
+                <?php endforeach; ?>
+                <tr>
+                    <td colspan="5" style="text-align: right; padding-right: 65px;">Total: Q<?php echo money_format('%.2n',$order->total); ?></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        
+        <a href="<?php echo URL::to('admin/order'); ?>" class="btn btn-success">Return</a>
+        <?php echo Form::hidden('_method', 'DELETE'); ?>
+
+        <?php echo Form::submit('Delete', array('class' => 'btn btn-danger')); ?>
+
+        <?php echo Form::close(); ?>
+
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

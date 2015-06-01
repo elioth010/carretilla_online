@@ -14,7 +14,7 @@
     <?php endif; ?>
     
     <div id="create-container" class="container" style="padding-top: 5em;">
-        <h1>Show <?php echo $menu->name; ?></h1>
+        <h1>Edit <?php echo $menu->name; ?></h1>
 
         <!-- if there are creation errors, they will show here -->
         <?php echo HTML::ul($errors->all()); ?>

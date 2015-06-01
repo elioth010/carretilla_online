@@ -1,0 +1,36 @@
+<?php $__env->startSection('content'); ?>
+<section>
+    <div id=principal class="container" >
+        <?php if(Session::has('flash_error')): ?>
+        <div class="tooltip_box1" id="flash_error"><?php echo Session::get('flash_error'); ?></div>
+        <?php endif; ?>
+
+        <?php if(Session::has('message')): ?>
+        <ul class="tick tick1">
+            <i class="icon4"> </i>
+            <li class="icon4_desc"><p><?php echo Session::get('message'); ?></p></li>
+        </ul>
+        <?php endif; ?>
+        
+        
+        <div class="grid_5">
+            <?php foreach($adminMenu as $menu): ?>
+            <a href="<?php echo URL::to($menu->route); ?>">
+                <div class="col-md-4" style="margin-top: 20px; margin-bottom: 20px;">
+                    <div class="span_9">
+                        <div class="col_7">
+                            <div class="img-circle">
+                                <img src="<?php echo $menu->image; ?>" id="image_menu_<?php echo $menu->id; ?>">
+                            </div>
+                            <h3 class="m_4"><?php echo $menu->title; ?></h3>
+                         </div>
+                    </div>
+                </div>
+            </a>
+            <?php endforeach; ?>
+        </div>
+        
+    </div>
+</section>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

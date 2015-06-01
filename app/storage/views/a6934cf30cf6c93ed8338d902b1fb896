@@ -1,0 +1,51 @@
+<?php $__env->startSection('content'); ?>
+<section>
+    <div id=principal class="container" >
+        <?php if(Session::has('flash_error')): ?>
+        <div class="tooltip_box1" id="flash_error"><?php echo Session::get('flash_error'); ?></div>
+        <?php endif; ?>
+
+        <?php if(Session::has('message')): ?>
+        <ul class="tick tick1">
+            <i class="icon4"> </i>
+            <li class="icon4_desc"><p><?php echo Session::get('message'); ?></p></li>
+        </ul>
+        <?php endif; ?>
+
+        <a href="<?php echo action("MarkController@create"); ?>" class="btn btn-success">Add</a>
+        <br/>
+        <br/>
+        <div class="grid_1" style="background: #ffffff; padding: 2px;">    
+            <table id="datatable-menu" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Initial Product</th>
+                        <th>Final Product</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($marks as $mark): ?>
+                    <tr>
+                        <td><?php echo $mark->code; ?></td>
+                        <td><?php echo $mark->name; ?></td>
+                        <td><?php echo $mark->product_range_initial; ?></td>
+                        <td><?php echo $mark->product_range_final; ?></td>
+                        <td> 
+                            <a href="<?php echo URL::to('admin/mark/'.$mark->code); ?>" class="btn btn-info">View</a>
+                            <a href="<?php echo URL::to('admin/mark/'.$mark->code.'/edit'); ?>" class="btn btn-default">Edit</a>
+                            <a href="<?php echo URL::to('admin/mark/'.$mark->code.'/delete'); ?>" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<?php $__env->stopSection(); ?>
+<!--action('UserController@updateUser', $usuario->id)-->
+<!--action('UserController@deleteUser', $usuario->id)-->
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

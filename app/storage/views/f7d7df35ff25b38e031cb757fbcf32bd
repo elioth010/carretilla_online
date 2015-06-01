@@ -1,0 +1,61 @@
+<?php $__env->startSection('content'); ?>
+<section>
+    <div id=principal class="container" >
+        <?php if(Session::has('flash_error')): ?>
+        <div class="tooltip_box1" id="flash_error"><?php echo Session::get('flash_error'); ?></div>
+        <?php endif; ?>
+
+        <?php if(Session::has('message')): ?>
+        <ul class="tick tick1">
+            <i class="icon4"> </i>
+            <li class="icon4_desc"><p><?php echo Session::get('message'); ?></p></li>
+        </ul>
+        <?php endif; ?>
+        
+        <br/>
+        <br/>
+        <div class="grid_1" style="background: #ffffff; padding: 2px;">    
+            <table id="datatable-menu" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Roles</th>
+                        <th>Route</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($adminMenus as $adminMenu): ?>
+                    <tr>
+                        <td><?php echo $adminMenu->name; ?></td>
+                        <td><?php echo $adminMenu->description; ?></td>
+                        <td>
+                         <?php
+                            $count = 0;
+                            foreach ($adminMenu->roles()->groupBy("id")->get() as $role) {
+                                if($count < (count($adminMenu->roles()->groupBy("id")->get())-1)){
+                                    echo $role->name.', ';
+                                }else{
+                                    echo $role->name;
+                                }
+                                $count++;
+                            }
+                            ?>
+                        </td>
+                        <td><?php echo $adminMenu->route; ?></td>
+                        <td> 
+                            <a href="<?php echo URL::to('admin/admin_menu/'.$adminMenu->id); ?>" class="btn btn-info">View</a>
+                            <a href="<?php echo URL::to('admin/admin_menu/'.$adminMenu->id.'/edit'); ?>" class="btn btn-default">Edit</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<?php $__env->stopSection(); ?>
+<!--action('UserController@updateUser', $usuario->id)-->
+<!--action('UserController@deleteUser', $usuario->id)-->
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

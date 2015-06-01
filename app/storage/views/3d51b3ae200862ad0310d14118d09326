@@ -1,0 +1,62 @@
+<?php $__env->startSection('content'); ?>
+
+<div class="single_center">
+    <!-- check for login error flash var -->
+    <?php if(Session::has('flash_error')): ?>
+    <div id="flash_error"><?php echo Session::get('flash_error'); ?></div>
+    <?php endif; ?>
+
+    <?php if(Session::has('message')): ?>
+    <ul class="tick tick1">
+        <i class="icon4"> </i>
+        <li class="icon4_desc"><p><?php echo Session::get('message'); ?></p></li>
+    </ul>
+    <?php endif; ?>
+
+    <div id="create-container" class="container" style="padding-top: 5em;">
+        <h1>Edit <?php echo $mark->name; ?></h1>
+
+        <!-- if there are creation errors, they will show here -->
+        <?php echo HTML::ul($errors->all()); ?>
+
+
+        <?php echo Form::model($mark, array('url'=>'admin/mark/'.$mark->code,'method' => 'post', 'files' => true)); ?>
+
+        <?php echo Form::token(); ?>
+
+
+        <div class="form-group">
+            <?php echo Form::label('code', 'Code:'); ?>
+
+            <?php echo Form::text('code', $mark->description, array('class' => 'form-control','maxlength' => 3, 'disabled')); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('name', 'Name:'); ?>
+
+            <?php echo Form::text('name', $mark->name, array('class' => 'form-control')); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('range_initial', 'Intial Product:'); ?>
+
+            <?php echo Form::text('range_initial', $mark->product_range_initial, array('class' => 'form-control', 'maxlength' => 8)); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('range_final', 'Final Product:'); ?>
+
+            <?php echo Form::text('range_final', $mark->product_range_final, array('class' => 'form-control', 'maxlength' => 8 )); ?>
+
+        </div>
+
+        <a href="<?php echo URL::to('admin/mark'); ?>" class="btn btn-danger">Return</a>
+        <?php echo Form::submit('Update', array('class' => 'btn btn-success')); ?>
+
+    </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
