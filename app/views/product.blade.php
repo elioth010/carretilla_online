@@ -36,7 +36,8 @@
                         <td>{{$product->mark()->getResults()->name}}</td>
                         <td>{{$product->name}}</td>
                         <td>{{$product->price}}</td>
-                        <td><img src="{{$product->image}}"/></td>
+                        <?php $image =  str_replace(ProductController::imagePath(), "" ,$product->image); ?>
+                        <td><img src="{{asset('/web/images/product/phpOP4Umz')}}" style="width: 50px; height: 50px;"/></td>
                         <td>
                             <?php
                             $count = 0;
