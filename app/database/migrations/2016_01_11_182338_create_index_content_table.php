@@ -18,6 +18,7 @@ class CreateIndexContentTable extends Migration {
             $t->string('image',500);
             $t->string('header_text',150);
             $t->string('description',500);
+            $t->integer('order')->unsigned();
             $t->timestamps();
             $t->softDeletes();
         });

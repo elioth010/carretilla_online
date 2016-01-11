@@ -1984,7 +1984,6 @@ return array(
     'Symfony\\Component\\Translation\\Writer\\TranslationWriter' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/Writer/TranslationWriter.php',
     'System_SSH_Agent' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH/Agent.php',
     'System_SSH_Agent_Identity' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH/Agent.php',
-    'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'UpdateDispatchInfoDetailTable' => $baseDir . '/app/database/migrations/2016_01_11_212734_update_dispatch_info_detail_table.php',
     'UpdateInventoryTable' => $baseDir . '/app/database/migrations/2016_01_11_195907_update_inventory_table.php',
     'UpdateMenuTable' => $baseDir . '/app/database/migrations/2015_04_22_012711_update_menu_table.php',

@@ -11,7 +11,16 @@ class CreateProductInfoTable extends Migration {
      * @return void
      */
     public function up() {
-        //
+        Schema::create('products_informations', function($t) {
+            $t->increments('id');
+            $t->foreign('product_id')->references('id')->on('products');
+            $t->foreign('order_id')->references('id')->on('orders');
+            $t->foreign('shop_id')->references('id')->on('shops');
+            $t->foreign('user_id')->references('id')->on('users');
+            $t->decimal('amount',13,2);
+            $t->timestamps();
+            $t->softDeletes();
+        });
     }
 
     /**
