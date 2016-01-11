@@ -11,6 +11,9 @@
  *
  * @author elioth010
  */
+
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
 class ReserveInventory extends Eloquent {
 
     /**
@@ -19,6 +22,10 @@ class ReserveInventory extends Eloquent {
      * @var string
      */
     protected $table = 'reserve_inventories';
+    
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes excluded from the model's JSON form.

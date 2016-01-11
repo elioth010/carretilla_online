@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 class Order extends Eloquent {
 
     /**
@@ -8,6 +8,10 @@ class Order extends Eloquent {
      * @var string
      */
     protected $table = 'orders';
+    
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes excluded from the model's JSON form.

@@ -42,7 +42,7 @@ class AccessController extends \BaseController {
             $oldRole = Role::find(Input::get('oldRole'));
             
             foreach (Action::all() as $action) {
-                DB::table('actions_roles_menu')->where('action_id', '=', $action->id)->where('role_id', '=', $oldRole->id)->where('menu_admin_id', '=', $adminMenu->id)->delete();
+                DB::table('actions_roles_menu')->where('action_id', '=', $action->id)->where('role_id', '=', $oldRole->id)->where('menu_admin_id', '=', $adminMenu->id)->softDeletes();
             }
 
             foreach (Input::get('actions') as $actionId) {
@@ -90,7 +90,7 @@ class AccessController extends \BaseController {
         $role = Role::find($id);
         
         foreach (Action::all() as $action) {
-            DB::table('actions_roles_menu')->where('action_id', '=', $action->id)->where('role_id', '=', $role->id)->where('menu_admin_id', '=', $adminMenu->id)->delete();
+            DB::table('actions_roles_menu')->where('action_id', '=', $action->id)->where('role_id', '=', $role->id)->where('menu_admin_id', '=', $adminMenu->id)->softDeletes();
         }
 
         // redirect

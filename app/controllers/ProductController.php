@@ -100,7 +100,7 @@ class ProductController extends \BaseController {
 
             $product = Product::where('code', '=', $id)->firstOrFail();
             foreach (Category::all() as $cat) {
-                DB::table('products_category')->where('product_id', '=', $product->code)->where('category_id', '=', $cat->id)->delete();
+                DB::table('products_category')->where('product_id', '=', $product->code)->where('category_id', '=', $cat->id)->softDeletes();
             }
             foreach (Input::get('categories') as $catId) {
                 DB::table('products_category')->insert(
@@ -129,7 +129,7 @@ class ProductController extends \BaseController {
             DB::table('products_category')->where('product_id', '=', $product->code)->where('category_id', '=', $cat->id)->delete();
         }
 
-        $product->delete();
+        $product->softDeletes();
 
         // redirect
         Session::flash('message', 'Successfully deleted the product!');

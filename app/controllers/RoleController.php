@@ -32,7 +32,7 @@ class RoleController extends BaseController {
 
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('role/create')->withErrors($validator)->withInput();
+            return Redirect::to('admin/role/create')->withErrors($validator)->withInput();
         } else {
             // store
             $role = new Role();

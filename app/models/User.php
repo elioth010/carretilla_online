@@ -2,6 +2,9 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Illuminate\Auth\Reminders\RemindableTrait;
+
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 //	use UserTrait, RemindableTrait;
@@ -12,6 +15,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      * @var string
      */
     protected $table = 'users';
+    
+    use SoftDeletingTrait;
+    use RemindableTrait;
+
+    protected $dates = ['deleted_at'];
+    
+    
     protected $fillable = array('username', 'email', 'password', 'age', 'name');
 
     /**

@@ -78,7 +78,7 @@ class CategoryController extends BaseController {
     public function delete($id) {
         $category = Category::find($id);
 
-        $category->delete();
+        $category->softDeletes();
         // redirect
         Session::flash('message', 'Successfully deleted the category!');
         return Redirect::to('admin/category');

@@ -117,7 +117,7 @@ class UserController extends BaseController {
             $user->roles()->detach($role->id);
         }
 
-        $user->delete();
+        $user->softDeletes();
 
         // redirect
         Session::flash('message', 'Successfully deleted the user!');

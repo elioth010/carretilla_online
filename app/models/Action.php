@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
 class Action extends Eloquent {
 
     /**
@@ -7,6 +9,10 @@ class Action extends Eloquent {
      *
      * @var string
      */
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
+
     protected $table = 'actions';
 
     /**

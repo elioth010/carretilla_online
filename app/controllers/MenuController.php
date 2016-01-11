@@ -184,7 +184,7 @@ class MenuController extends Controller {
             $menu->roles()->detach($role->id);
         }
 
-        $menu->delete();
+        $menu->softDeletes();
 
         // redirect
         Session::flash('message', 'Successfully deleted the menu!');

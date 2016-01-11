@@ -78,9 +78,9 @@ class OrderController extends \BaseController {
     public function delete($id) {
         $order = Order::find($id);
         foreach ($order->detail()->getResults() as $detail) {
-            $detail->delete();
+            $detail->softDeletes();
         }
-        $order->delete();
+        $order->softDeletes();
         // redirect
         Session::flash('message', 'Successfully deleted the product!');
         return Redirect::to('orders');

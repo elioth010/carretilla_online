@@ -87,7 +87,7 @@ class MarkController extends \BaseController {
 
     public function delete($id) {
         $mark = Mark::find($id);
-        $mark->delete();
+        $mark->softDeletes();
         // redirect
         Session::flash('message', 'Successfully deleted the mark!');
         return Redirect::to('admin/mark');

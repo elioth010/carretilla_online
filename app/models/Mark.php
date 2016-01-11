@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class Mark extends Eloquent {
 
@@ -9,6 +10,10 @@ class Mark extends Eloquent {
 	 */
 	protected $table = 'marks';
         protected $primaryKey = 'code';
+        
+        use SoftDeletingTrait;
+
+        protected $dates = ['deleted_at'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.

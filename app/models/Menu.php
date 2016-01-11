@@ -11,6 +11,7 @@
  *
  * @author elioth010
  */
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class Menu extends Eloquent {
 
@@ -21,6 +22,9 @@ class Menu extends Eloquent {
      */
     protected $table = 'menus';
 
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
     /**
      * The attributes excluded from the model's JSON form.
      *
