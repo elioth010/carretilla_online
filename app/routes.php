@@ -23,7 +23,7 @@ Route::get('home', array('as' => 'home', function () {
         return Redirect::to('/');
     }));
 
-Route::post('login', function () {
+Route::post('login', function(){
     $user = array(
         'username' => Input::get('username'),
         'password' => Input::get('password')
@@ -36,7 +36,7 @@ Route::post('login', function () {
     
     // authentication failure! lets go back to the login page
     return Redirect::route('login')->with('flash_error', 'Your username/password combination was incorrect.')->withInput();
-});
+})->before('csrf');
 
 Route::controller('password', 'RemindersController');
 

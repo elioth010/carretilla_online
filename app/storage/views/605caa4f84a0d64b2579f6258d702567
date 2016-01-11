@@ -20,22 +20,39 @@
 
 <section class="login">
     <div class="login-form">
-        <form method="post" action="login">
-            <h1>Enter your credentials</h1>
-            <input type="text" name="username" value="" placeholder="Username or Email">
-            <input type="password" name="password" value="" placeholder="Password">
+        <h1>Enter your credentials</h1>
+        <?php echo HTML::ul($errors->all()); ?>
+
+
+        <?php echo Form::open(array('url' => 'login', 'method'=>'post')); ?>
+
+        <?php echo Form::token(); ?>
+
+        <div class="form-group">
+            <?php echo Form::text('username', Input::old('username'), array('class' => 'form-control','placeholder'=>'Username')); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::password('password',array('class' => 'form-control', 'placeholder'=>'Passoword')); ?>
+
+        </div>
+        <div class="form-group">
             <p class="remember_me">
                 <label>
-                    <input type="checkbox" name="remember_me" id="remember_me">
+                    <?php echo Form::checkbox('remember_me', 'value', false); ?>
+
                     Remember me on this computer
                 </label>
             </p>
-            <input value="Login" type="submit">
+            <?php echo Form::submit('Login', array('class' => 'btn btn-success')); ?>
 
-            <div class="login-help">
-                <p>Forgot your password? <a href="index.php">Click here to reset it</a>.</p>
-            </div>
-        </form>
+        </div>
+        <div class="login-help">
+            <p>Forgot your password? <a href="index.php">Click here to reset it</a>.</p>
+        </div>
+        <?php echo Form::close(); ?>
+
     </div>
 </section>
 <?php $__env->stopSection(); ?>

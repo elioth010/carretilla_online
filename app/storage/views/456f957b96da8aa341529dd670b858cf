@@ -14,60 +14,67 @@
     <?php endif; ?>
 
     <div id="create-container" class="container">
-        <h1>Show <?php echo $product->name; ?></h1>
+        <h1>Show <?php echo $menu->name; ?></h1>
 
         <!-- if there are creation errors, they will show here -->
         <?php echo HTML::ul($errors->all()); ?>
 
 
-        <?php echo Form::open(array('url' => 'admin/product', 'method'=>'post', 'files' => true)); ?>
+        <?php echo Form::open(array('url' => 'admin/menu', 'method'=>'post', 'files' => true)); ?>
 
         <?php echo Form::token(); ?>
 
         <div class="form-group">
-            <?php echo Form::label('code', 'Code:'); ?>
-
-            <?php echo Form::text('code', $product->code, array('class' => 'form-control', 'disabled')); ?>
-
-        </div>
-         
-        <div class="form-group">
-            <?php echo Form::label('mark', 'Mark:'); ?>
-
-            <?php echo Form::select('mark', ['' => ''] + Mark::all()->lists('name', 'code'),$product->mark()->getResults()->code, array('class', 'form-controll', 'disabled')); ?>
-
-        </div>
-        
-        <div class="form-group">
             <?php echo Form::label('name', 'Name:'); ?>
 
-            <?php echo Form::text('name', $product->name, array('class' => 'form-control', 'disabled')); ?>
+            <?php echo Form::text('name', $menu->name, array('class' => 'form-control', 'disabled')); ?>
 
         </div>
 
         <div class="form-group">
-            <?php echo Form::label('price', 'Price:'); ?>
+            <?php echo Form::label('description', 'Description:'); ?>
 
-            <?php echo Form::text('price', $product->price, array('class' => 'form-control', 'disabled')); ?>
+            <?php echo Form::text('description', $menu->description, array('class' => 'form-control', 'disabled')); ?>
 
         </div>
 
         <div class="form-group">
             <?php echo Form::label('image', 'Image:'); ?>
 
-            <?php echo Form::text('image_before',str_replace(ProductController::imagePath(), "" ,$product->image),array('disabled', 'class' => 'form-control', 'style'=>'width: 100%;')); ?>
+            <?php echo Form::text('menu_image',str_replace(MenuController::imagePath(), "" ,$menu->image),array('disabled', 'class' => 'form-control')); ?>
 
         </div>
 
         <div class="form-group">
-            <?php echo Form::label('category', 'Category:'); ?>
+            <?php echo Form::label('title', 'Title:'); ?>
+
+            <?php echo Form::text('title', $menu->title, array('class' => 'form-control','disabled')); ?>
+
+        </div>
+
+        <div class="form-group">
+            <?php echo Form::label('role', 'Role:'); ?>
 
             <br>
-            <?php foreach($product->categories()->getResults() as $checkbox): ?>
-                <?php echo Form::checkbox($checkbox->name, $checkbox->id, true , array("style", "padding-left:1.5em", 'disabled')); ?><label style="padding-right:0.5em" ><?php echo $checkbox->name.''; ?></label>
+            <?php foreach($menu->roles()->getResults() as $checkbox): ?>
+            <?php echo Form::checkbox($checkbox->name, $checkbox->id, true , array("style", "padding-left:1.5em", 'disabled')); ?><label style="padding-right:0.5em" ><?php echo $checkbox->name.''; ?></label>
             <?php endforeach; ?>
+            <!--            Form::select('role', ['' => ''] +$menu->roles()->getResults()->lists('name', 'id')) -->
         </div>
-        <a href="<?php echo URL::to('admin/product'); ?>" class="btn btn-danger">Return</a>
+
+        <div class="form-group">
+            <?php echo Form::label('route', 'Route:'); ?>
+
+            <?php echo Form::text('route', $menu->route, array('class' => 'form-control','disabled')); ?>
+
+        </div>
+        <div class="form-group">
+            <?php echo Form::label('order', 'Order:'); ?>
+
+            <?php echo Form::text('order', $menu->order, array('class' => 'form-control', 'disabled')); ?>
+
+        </div>
+        <a href="<?php echo URL::to('admin/menu'); ?>" class="btn btn-danger">Return</a>
     </div>
 </div>
 <?php $__env->stopSection(); ?>
