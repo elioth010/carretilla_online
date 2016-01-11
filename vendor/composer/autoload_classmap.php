@@ -48,7 +48,7 @@ return array(
     'CreateInvoicesTable' => $baseDir . '/app/database/migrations/2016_01_11_182307_create_invoices_table.php',
     'CreateMenusRolesTable' => $baseDir . '/app/database/migrations/2015_04_16_184201_create_menus_roles_table.php',
     'CreateMenusTable' => $baseDir . '/app/database/migrations/2015_04_16_184151_create_menus_table.php',
-    'CreatePasswordRemindersTable' => $baseDir . '/app/database/migrations/2016_01_11_183248_create_password_reminders_table.php',
+    'CreatePasswordRemindersTable' => $baseDir . '/app/database/migrations/2015_04_13_051242_create_password_reminders_table.php',
     'CreatePossitionsPageTable' => $baseDir . '/app/database/migrations/2016_01_11_182337_create_possitions_page_table.php',
     'CreateProductInfoTable' => $baseDir . '/app/database/migrations/2016_01_11_184505_create_product_info_table.php',
     'CreateRolesTable' => $baseDir . '/app/database/migrations/2015_04_16_184110_create_roles_table.php',
