@@ -13,11 +13,11 @@ class CreateIndexContentTable extends Migration {
     public function up() {
         Schema::create('index_page', function($t) {
             $t->increments('id');
-            $t->foreign('client_id')->references('id')->on('users');
-            $t->foreign('order_id')->references('id')->on('orders');
-            $t->foreign('shop_id')->references('id')->on('shops');
-            $t->foreign('user_id')->references('id')->on('users');
-            $t->decimal('amount',13,2);
+            $t->foreign('position_id')->references('id')->on('positions_page');
+            $t->foreign('product_id')->references('id')->on('products');
+            $t->string('image',500);
+            $t->string('header_text',150);
+            $t->string('description',500);
             $t->timestamps();
             $t->softDeletes();
         });
