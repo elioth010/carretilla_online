@@ -13,11 +13,12 @@ class CreateShopTable extends Migration {
     public function up() {
         Schema::create('shops', function($t) {
             $t->increments('id');
+            $t->string('code', 20);
             $t->string('name', 350);
             $t->string('address', 500);
             $t->string('phone', 20);
             $t->string('image', 600);
-            $t->unique(array('id', 'name'));
+            $t->unique(array('id', 'code'));
             $t->timestamps();
             $t->softDeletes();
         });

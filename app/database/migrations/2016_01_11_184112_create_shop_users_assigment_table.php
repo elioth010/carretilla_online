@@ -13,6 +13,8 @@ class CreateShopUsersAssigmentTable extends Migration {
     public function up() {
         Schema::create('users_shops', function($t) {
             $t->increments('id');
+            $t->integer('user_id', false)->unsigned();
+            $t->integer('shop_id', false)->unsigned();
             $t->foreign('user_id')->references('id')->on('users');
             $t->foreign('shop_id')->references('id')->on('shops');
             $t->timestamps();

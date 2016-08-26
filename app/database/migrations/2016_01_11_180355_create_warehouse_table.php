@@ -15,6 +15,7 @@ class CreateWarehouseTable extends Migration {
             $t->increments('id');
             $t->string('name', 250);
             $t->unique('name');
+            $t->integer('shop_id', false)->unsigned();
             $t->foreign('shop_id')->references('id')->on('shops');
             $t->timestamps();
             $t->softDeletes();
